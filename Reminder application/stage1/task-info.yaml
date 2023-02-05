@@ -1,0 +1,16 @@
+type: edu
+files:
+- name: src/reminderapplication/Main.java
+  visible: true
+- name: test/TimeReminderApplicationTest.java
+  visible: false
+- name: src/reminderapplication/TimeReminderApplication.java
+  visible: true
+- name: src/reminderapplication/ReminderFrame.java
+  visible: true
+- name: src/reminderapplication/CalendarProgram.java
+  visible: true
+- name: src/reminderapplication/Music.java
+  visible: true
+- name: src/reminderapplication/music.wav
+  visible: true
