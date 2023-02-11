@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">1</div>
+<div class="counter">0</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.289s</div>
+<div class="counter">32.021s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox failures" id="successRate">
-<div class="percent">0%</div>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,125 +61,13 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Failed tests</a>
+<a href="#tab0">Tests</a>
 </li>
 <li>
-<a href="#tab1">Tests</a>
+<a href="#tab1">Standard output</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
-<h2>Failed tests</h2>
-<div class="test">
-<a name="start"></a>
-<h3 class="failures">start</h3>
-<span class="code">
-<pre>java.lang.AssertionError: Unexpected error during testing
-
-We have recorded this bug and will fix it soon.
-
-Submitted via IDE
-
-OS Windows 10
-Java 17.0.4
-Vendor JetBrains s.r.o.
-Testing library version 10
-
-org.hyperskill.hstest.exception.outcomes.UnexpectedError: No tests found
-	at org.hyperskill.hstest.stage.StageTest.initTests(StageTest.java:115)
-	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:151)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at jdk.proxy1/jdk.proxy1.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker$2.run(TestWorker.java:176)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
-	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
-	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:133)
-	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:71)
-	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
-	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
-	at org.junit.Assert.fail(Assert.java:89)
-	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:203)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at jdk.proxy1/jdk.proxy1.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker$2.run(TestWorker.java:176)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
-	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
-	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:133)
-	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:71)
-	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
-	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
-</pre>
-</span>
-</div>
-</div>
-<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -190,11 +78,104 @@ org.hyperskill.hstest.exception.outcomes.UnexpectedError: No tests found
 </tr>
 </thead>
 <tr>
-<td class="failures">start</td>
-<td class="failures">0.289s</td>
-<td class="failures">failed</td>
+<td class="success">start</td>
+<td class="success">32.021s</td>
+<td class="success">passed</td>
 </tr>
 </table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>?[1;31m
+Start test 1?[0m
+?[1;31m
+Start test 2?[0m
+?[1;31m
+Start test 3?[0m
+?[0;34mReminder Frames list 0
+?[0;34morg.assertj.swing.fixture.FrameFixture@6ce62dda
+?[0m?[1;31m
+Start test 4?[0m
+?[1;31m
+Start test 5?[0m
+?[1;31m
+Start test 6?[0m
+?[1;31m
+Start test 7?[0m
+?[0m?[0;34mCancel null
+?[1;31m
+Start test 8?[0m
+?[0m?[0;34mReminder Frames list 0
+?[0;34morg.assertj.swing.fixture.FrameFixture@3722abf5
+?[0m?[0;34mADD no Edit 
+?[0m?[0;34mNUMBER Reminder Text: ; Delay: 25; Period: 0;
+?[0m?[1;31m
+Start test 9?[0m
+?[0m?[0;34mReminder Frames list 1
+?[1;31m
+Start test 10?[0m
+?[0;34morg.assertj.swing.fixture.FrameFixture@3a7ab466
+?[0m?[0;34mADD no Edit Wake up
+?[0m?[0;34mNUMBER Reminder Text: Wake up; Delay: 15; Period: 5;
+?[0m?[0;34mReminder Frames list 2
+?[0m?[0;34morg.assertj.swing.fixture.FrameFixture@67905aa2
+?[0m?[0;34mADD no Edit Gym
+?[0m?[0;34mNUMBER Reminder Text: Gym; Delay: 30; Period: 10;
+?[0m?[0;34mReminder Frames list 3
+?[0m?[0;34morg.assertj.swing.fixture.FrameFixture@54496550
+?[0m?[0;34mADD no Edit Do not forget Java lessons
+?[0m?[0;34mNUMBER Reminder Text: Do not forget Java lessons; Delay: 5; Period: 20;
+?[0m?[0;34mReminder Text: ; Delay: 25; Period: 0;
+?[0m?[0;34mList size 4
+?[0m?[0;34mReminder Text: Wake up; Delay: 15; Period: 5;
+?[0m?[0;34mList size 4
+?[0m?[0;34mReminder Text: Gym; Delay: 30; Period: 10;
+?[0m?[0;34mList size 4
+?[0m?[0;34mReminder Text: Do not forget Java lessons; Delay: 5; Period: 20;
+?[0m?[0;34mList size 4
+?[0m?[1;31m
+Start test 11?[0m
+?[0;34m4
+?[0m?[0;34mReminder Text: Do not forget Java lessons; Delay: 5; Period: 20;
+?[0m?[0;34morg.assertj.swing.fixture.FrameFixture@54496550
+?[0m?[0;34mOK Edit Do not forget Java lessons and Swim
+?[0m?[0;34mReminder Text: Gym; Delay: 30; Period: 10;
+?[0m?[0;34morg.assertj.swing.fixture.FrameFixture@67905aa2
+?[0m?[0;34mOK Edit Gym and Swim
+?[0m?[0;34mReminder Text: Wake up; Delay: 15; Period: 5;
+?[0m?[0;34morg.assertj.swing.fixture.FrameFixture@3a7ab466
+?[0m?[0;34mOK Edit Wake up and Swim
+?[0m?[0;34mReminder Text: ; Delay: 25; Period: 0;
+?[0m?[0;34morg.assertj.swing.fixture.FrameFixture@3722abf5
+?[0m?[0;34mOK Edit  and Swim
+?[0m?[0;34mReminder Text:  and Swim; Delay: 5; Period: 20;
+?[0m?[0;34mList size 4
+?[0m?[0;34mReminder Text: Wake up and Swim; Delay: 30; Period: 10;
+?[0m?[0;34mList size 4
+?[0m?[0;34mReminder Text: Gym and Swim; Delay: 15; Period: 5;
+?[0m?[0;34mList size 4
+?[0m?[0;34mReminder Text: Do not forget Java lessons and Swim; Delay: 25; Period: 0;
+?[0m?[0;34mList size 4
+?[0m?[1;31m
+Start test 12?[0m
+?[0;34m4 length
+?[0m?[0;34m3
+?[0m?[0;34m3 length
+?[0m?[0;34m2
+?[0m?[0;34m2 length
+?[0m?[0;34m1
+?[0m?[0;34m1 length
+?[0m?[0;34m0
+?[0m?[1;31m
+Start test 13?[0m
+?[0m?[0;34mReminder Frames list 0
+?[0;34morg.assertj.swing.fixture.FrameFixture@4b56803
+?[0m?[0;34mADD no Edit Test reminder starts after set delay
+?[0m?[0;34mNUMBER Reminder Text: Test reminder starts after set delay; Delay: 5; Period: 0;
+?[0m?[0;34morg.assertj.swing.fixture.FrameFixture@4b56803
+?[0m</pre>
+</span>
 </div>
 </div>
 <div id="footer">
@@ -204,7 +185,7 @@ org.hyperskill.hstest.exception.outcomes.UnexpectedError: No tests found
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.3.3</a> at 5 февр. 2023 г., 08:14:04</p>
+<a href="http://www.gradle.org">Gradle 7.3.3</a> at 11 февр. 2023 г., 16:17:11</p>
 </div>
 </div>
 </body>

@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -23,12 +24,15 @@ public class ReminderFrame extends JFrame {
 
     TimerTask task;
     java.util.Timer timer;
-    private final static Integer[] delays = {5, 10, 60};
-    private final static Integer[] repeatPeriod = {0, 5, 10, 60};
+    private final static Integer[] delays = {25, 15, 30,5};
+    private final static Integer[] repeatPeriod = {0, 5, 10,20};
     boolean flag = false;
     boolean toEdit = false;
     JLabel periodlabel;
     JLabel delayslabel;
+
+    JLabel reminderText;
+    JLabel setDelay;
 
     String text;
     int numWarningBeeps;
@@ -36,6 +40,7 @@ public class ReminderFrame extends JFrame {
     public ReminderFrame(ReminderFrame reminderFrame, JButton addButton, TimeReminderApplication tm)
             throws HeadlessException {
         super("Set Reminder");
+        setName("Set Reminder");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(500, 200);
         setBackground(Color.GRAY);
@@ -47,7 +52,8 @@ public class ReminderFrame extends JFrame {
         this.addButton = addButton;
         this.tm = tm;
 
-        textField = new JFormattedTextField();
+        textField = new JTextField();
+        textField.setName("Field");
         JScrollPane scrollPane = new JScrollPane(textField);
         textField.setFont(new Font("Dialog", Font.PLAIN, 14));
         textField.setBounds(10, 40, 250, 30);
@@ -56,19 +62,27 @@ public class ReminderFrame extends JFrame {
 
         JComboBox delaysComboBox = new JComboBox(delays);
         JComboBox periodComboBox = new JComboBox(repeatPeriod);
+        periodComboBox.setName("set Period");
+        delaysComboBox.setName("set Delay");
 
-        JLabel reminderText = new JLabel("Reminder Text");
+        reminderText = new JLabel("Reminder Text");
+
+        reminderText.setName("Reminder Text Label");
 
         delayslabel = new JLabel();
-        JLabel setDelay = new JLabel("Set Delay");
-
+        delayslabel.setName("Delays Label");
+        setDelay = new JLabel("Set Delay");
+        setDelay.setName("Set Delay Label");
         delayslabel.setText(String.valueOf(delays[delaysComboBox.getSelectedIndex()]));
 
         delaysComboBox.addActionListener(actionEvent -> delayslabel.setText(String.valueOf(delays[delaysComboBox.getSelectedIndex()])));
 
 
-         periodlabel = new JLabel();
-        JLabel setRepeat = new JLabel("Set Repeat Period");
+        periodlabel = new JLabel();
+        periodlabel.setName("Period label");
+        JLabel setRepeat = new JLabel("Set Period");
+
+        setRepeat.setName("Set Repeat Period Label");
 
 
         periodlabel.setText(String.valueOf(repeatPeriod[periodComboBox.getSelectedIndex()]));
@@ -92,7 +106,7 @@ public class ReminderFrame extends JFrame {
         add(setDelay);
         add(delayslabel);
         add(reminderText);
-//        delaysComboBox.setVisible(true);
+
 
 
         ReminderFrame rf = this;
@@ -114,13 +128,13 @@ public class ReminderFrame extends JFrame {
         });
 
         okButton = new JButton("OK");
-
+        okButton.setName("OK");
         okButton.setBounds(20, 110, 100, 30);
         okButton.setVisible(true);
         add(okButton);
 
         JButton cancelButton = new JButton("Cancel");
-
+        cancelButton.setName("Cancel");
         cancelButton.setBounds(150, 110, 100, 30);
         cancelButton.setVisible(true);
         add(cancelButton);
@@ -136,21 +150,31 @@ public class ReminderFrame extends JFrame {
                 }
                 flag = false;
                 addButton.setEnabled(true);
-                toolkit = Toolkit.getDefaultToolkit();
                 task = new TimerTask() {
                     public void run() {
                         numWarningBeeps = 3;
 
                         Music music = new Music();
                         music.setFile("D:\\Reminder Application\\Reminder application\\stage1\\src\\reminderapplication\\music.wav");
-                        music.play();
+                        music.play();rf.setVisible(true);
+                        try {
+                            Thread.sleep(3000);
+                        } catch (InterruptedException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                        try {
+                            music.stop();
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                        rf.setVisible(false);
 //                            toolkit.beep();
                         System.out.println("Beep!");
 
 
                         System.out.println("Task performed on: " + new Date() + "n" +
                                 "Thread's name: " + Thread.currentThread().getName());
-                        rf.setVisible(true);
+
                         okButton.setEnabled(false);
                     }
                 };
@@ -217,30 +241,8 @@ public class ReminderFrame extends JFrame {
 
     @Override
     public String toString() {
-        return "Reminder Text: "+ this.text+"; Delay: " + this.delayslabel.getText() + "; Period: "+ this.periodlabel.getText()+";" ;
+        return "Reminder Text: " + this.text + "; Delay: " + this.delayslabel.getText() + "; Period: " + this.periodlabel.getText() + ";";
     }
 
 
-//    private void createLayout(JComponent... arg) {
-//
-//        var pane = tm.getContentPane();
-//        var gl = new GroupLayout(pane);
-//        pane.setLayout(gl);
-//
-//        gl.setAutoCreateContainerGaps(true);
-//        gl.setAutoCreateGaps(true);
-//
-//        gl.setHorizontalGroup(gl.createParallelGroup()
-//                .addComponent(arg[0])
-//                .addComponent(arg[1])
-//
-//        );
-//
-//        gl.setVerticalGroup(gl.createSequentialGroup()
-//                .addComponent(arg[0])
-//                .addComponent(arg[1])
-//        );
-//
-//        tm.pack();
-//    }
 }

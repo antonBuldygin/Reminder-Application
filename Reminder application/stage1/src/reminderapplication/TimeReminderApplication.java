@@ -17,6 +17,7 @@ public class TimeReminderApplication extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500, 300);
         setBackground(Color.BLACK);
+
         JButton addButton = new JButton("ADD");
 
         addButton.setVisible(true);
@@ -58,22 +59,24 @@ public class TimeReminderApplication extends JFrame {
 
         b.setSelectedIndex(b.getLastVisibleIndex());
         scrollPane = new JScrollPane(b);
+        b.setName("List of Reminders");
 
         scrollPane.setBounds(5, 5, 480, 100);
 
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setName("Scroll Pane");
         add(scrollPane);
 
 
         addButton.addActionListener(e -> {
             reminderFrame = new ReminderFrame(reminderFrame, addButton, this);
-
+//            add(reminderFrame);
             if (!reminderFrame.flag) {
                 addButton.setEnabled(false);
                 reminderFrame.setVisible(true);
                 reminderFrame.flag = true;
                 reminderFrame.okButton.setEnabled(true);
-                System.out.println(reminderName.size());
+                System.out.println("Reminder Frames list "+ reminderName.size());
             }
             if (!reminderFrame.flag) {
 
