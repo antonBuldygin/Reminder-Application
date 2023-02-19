@@ -16,8 +16,8 @@ public class Music {
             sound = AudioSystem.getAudioInputStream(file);
             clip = AudioSystem.getClip();
             clip.open(sound);
-        } catch (Exception e) {
-
+        }
+        catch (Exception e) {
         }
     }
 

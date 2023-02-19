@@ -18,6 +18,7 @@
             <option value="$PROJECT_DIR$/Reminder application/stage1/build/reports/tests" />
             <option value="$PROJECT_DIR$/Reminder application/stage1/build/test-results" />
             <option value="$PROJECT_DIR$/Reminder application/stage1/build/tmp" />
+            <option value="$PROJECT_DIR$/Reminder application/stage1/out" />
             <option value="$PROJECT_DIR$/util" />
           </set>
         </option>
