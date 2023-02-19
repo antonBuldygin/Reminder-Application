@@ -5,7 +5,7 @@
 [1;31m
 Start test 3[0m
 [0;34mReminder Frames list 0
-8[0;34morg.assertj.swing.fixture.FrameFixture@52725b97
+8[0;34morg.assertj.swing.fixture.FrameFixture@1cdb88a1
 [0m[1;31m
 Start test 4[0m
 [1;31m
@@ -18,7 +18,7 @@
 [1;31m
 Start test 8[0m
 #[0m[0;34mReminder Frames list 0
-8[0;34morg.assertj.swing.fixture.FrameFixture@20bb39a8
+7[0;34morg.assertj.swing.fixture.FrameFixture@e6fe68b
 [0m[0;34mADD no Edit 
 :[0m[0;34mNUMBER Reminder Text: ; Delay: 25; Period: 0;
 [0m[1;31m
@@ -26,15 +26,15 @@
 #[0m[0;34mReminder Frames list 1
 [1;31m
 Start test 10[0m
-8[0;34morg.assertj.swing.fixture.FrameFixture@4ffcbd07
+8[0;34morg.assertj.swing.fixture.FrameFixture@7dff8227
  [0m[0;34mADD no Edit Wake up
 A[0m[0;34mNUMBER Reminder Text: Wake up; Delay: 15; Period: 5;
 #[0m[0;34mReminder Frames list 2
-;[0m[0;34morg.assertj.swing.fixture.FrameFixture@556f90c
+<[0m[0;34morg.assertj.swing.fixture.FrameFixture@7b4d7598
 [0m[0;34mADD no Edit Gym
 >[0m[0;34mNUMBER Reminder Text: Gym; Delay: 30; Period: 10;
 #[0m[0;34mReminder Frames list 3
-;[0m[0;34morg.assertj.swing.fixture.FrameFixture@ae3d284
+<[0m[0;34morg.assertj.swing.fixture.FrameFixture@1962873d
 3[0m[0;34mADD no Edit Do not forget Java lessons
 T[0m[0;34mNUMBER Reminder Text: Do not forget Java lessons; Delay: 5; Period: 20;
 3[0m[0;34mReminder Text: ; Delay: 25; Period: 0;
@@ -50,16 +50,16 @@
 
 [0;34m4
 M[0m[0;34mReminder Text: Do not forget Java lessons; Delay: 5; Period: 20;
-;[0m[0;34morg.assertj.swing.fixture.FrameFixture@ae3d284
+<[0m[0;34morg.assertj.swing.fixture.FrameFixture@1962873d
 8[0m[0;34mOK Edit Do not forget Java lessons and Swim
 7[0m[0;34mReminder Text: Gym; Delay: 30; Period: 10;
-;[0m[0;34morg.assertj.swing.fixture.FrameFixture@556f90c
+<[0m[0;34morg.assertj.swing.fixture.FrameFixture@7b4d7598
 ![0m[0;34mOK Edit Gym and Swim
 :[0m[0;34mReminder Text: Wake up; Delay: 15; Period: 5;
-<[0m[0;34morg.assertj.swing.fixture.FrameFixture@4ffcbd07
+<[0m[0;34morg.assertj.swing.fixture.FrameFixture@7dff8227
 %[0m[0;34mOK Edit Wake up and Swim
 3[0m[0;34mReminder Text: ; Delay: 25; Period: 0;
-<[0m[0;34morg.assertj.swing.fixture.FrameFixture@20bb39a8
+;[0m[0;34morg.assertj.swing.fixture.FrameFixture@e6fe68b
 [0m[0;34mOK Edit  and Swim
 <[0m[0;34mReminder Text:  and Swim; Delay: 5; Period: 20;
 [0m[0;34mList size 4
@@ -82,8 +82,8 @@
 [0m[1;31m
 Start test 13[0m
 #[0m[0;34mReminder Frames list 0
-8[0;34morg.assertj.swing.fixture.FrameFixture@67d27fca
+8[0;34morg.assertj.swing.fixture.FrameFixture@4fe3b5ba
 =[0m[0;34mADD no Edit Test reminder starts after set delay
 ][0m[0;34mNUMBER Reminder Text: Test reminder starts after set delay; Delay: 5; Period: 0;
-<[0m[0;34morg.assertj.swing.fixture.FrameFixture@67d27fca
+<[0m[0;34morg.assertj.swing.fixture.FrameFixture@4fe3b5ba
 [0m
