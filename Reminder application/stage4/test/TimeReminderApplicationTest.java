@@ -228,8 +228,8 @@ public class TimeReminderApplicationTest extends SwingTest {
             Thread.sleep(200);
             deleteButton.click();
         }
-        if (contents.length != 1) {
-            new WrongAnswer("all reminders should be deleted from 'Reminder Application' window ");
+        if (jListFixture.contents().length != 0) {
+           throw  new WrongAnswer("all reminders should be deleted from 'Reminder Application' window ");
         }
         return correct();
     }

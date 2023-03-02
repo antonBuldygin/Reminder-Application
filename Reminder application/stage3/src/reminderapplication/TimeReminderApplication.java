@@ -13,6 +13,7 @@ public class TimeReminderApplication extends JFrame {
 
     JList<ReminderFrame> b;
 
+    JButton editButton;
     JButton deleteButton;
     JButton addButton;
     Model model;
@@ -30,7 +31,7 @@ public class TimeReminderApplication extends JFrame {
         add(addButton);
         addButton.setBackground(Color.ORANGE);
 
-        JButton editButton = new JButton("EDIT");
+        editButton = new JButton("EDIT");
         editButton.setVisible(true);
         editButton.setBounds(new Rectangle());
         editButton.setName("EditReminder");
@@ -71,6 +72,8 @@ public class TimeReminderApplication extends JFrame {
 
             if (!reminderFrame.flag) {
                 addButton.setEnabled(false);
+                deleteButton.setEnabled(false);
+                editButton.setEnabled(false);
                 reminderFrame.setVisible(true);
                 reminderFrame.flag = true;
                 reminderFrame.okButton.setEnabled(true);

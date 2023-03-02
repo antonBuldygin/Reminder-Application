@@ -22,13 +22,15 @@ public class Controller implements ActionListener {
         if (actionEvent.getSource() == reminderFrame.okButton) {
             if (!reminderFrame.toEdit) {
                 reminderFrame.text = reminderFrame.textField.getText();
-                System.out.println("ADD no Edit " + reminderFrame.text);
+                System.out.println("ADD option " + reminderFrame.text);
                 reminderFrame.tm.model.addElement(reminderFrame);
                 if (!reminderFrame.tm.model.isEmpty()) {
                     System.out.println("NUMBER " + reminderFrame.tm.model.lastElement());
                 }
                 reminderFrame.flag = false;
                 reminderFrame.addButton.setEnabled(true);
+                reminderFrame.deleteButton.setEnabled(true);
+                reminderFrame.editButton.setEnabled(true);
                 reminderFrame.task = new TimerTask() {
                     public void run() {
 
@@ -74,6 +76,8 @@ public class Controller implements ActionListener {
                 reminderFrame.text = reminderFrame.textField.getText();
                 System.out.println("OK Edit " + reminderFrame.text);
                 reminderFrame.addButton.setEnabled(true);
+                reminderFrame.deleteButton.setEnabled(true);
+                reminderFrame.editButton.setEnabled(true);
                 reminderFrame.task.cancel();
                 reminderFrame.timer = new Timer();
                 reminderFrame.task = new TimerTask() {
@@ -122,6 +126,8 @@ public class Controller implements ActionListener {
             reminderFrame.textField.setText(reminderFrame.text);
             reminderFrame.flag = false;
             reminderFrame.addButton.setEnabled(true);
+            reminderFrame.deleteButton.setEnabled(true);
+            reminderFrame.editButton.setEnabled(true);
             reminderFrame.dispose();
         }
 

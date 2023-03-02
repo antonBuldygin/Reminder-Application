@@ -18,6 +18,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hyperskill.hstest.testcase.CheckResult.correct;
 import static org.hyperskill.hstest.testcase.CheckResult.wrong;
 
@@ -39,7 +40,7 @@ public class TimeReminderApplicationTest extends SwingTest {
     String text3ForReminder = "Do not forget Java lessons";
     String text4ForReminder = "Swim";
     String text5ForReminder = " and ";
-    Map<Integer, Integer> delayMap = Map.of(0, 25, 1, 15, 2, 30, 3, 5);
+    Map<Integer, Integer> delayMap = Map.of(0, 30, 1, 25, 2, 15, 3, 5);
     Map<Integer, Integer> periodMap = Map.of(0, 0, 1, 5, 2, 10, 3, 20);
     String[] listOftext = new String[]{"", text1ForReminder, text2ForReminder, text3ForReminder};
     @SwingComponent(name = "AddReminder") private JButtonFixture addButton;
@@ -59,20 +60,71 @@ public class TimeReminderApplicationTest extends SwingTest {
     }
 
     @DynamicTest(order = 2) CheckResult testButtons() {
-        requireEnabled(addButton);
-        requireVisible(addButton);
-        requireEnabled(deleteButton);
-        requireVisible(deleteButton);
-        requireEnabled(editButton);
-        requireVisible(editButton);
-        requireEnabled(jListFixture);
-        requireVisible(jListFixture);
-        requireEnabled(scrollPaneFixture);
-        requireVisible(scrollPaneFixture);
+        requireEnabled(addButton, deleteButton, editButton, jListFixture, scrollPaneFixture);
+        requireVisible(addButton, deleteButton,editButton, jListFixture, scrollPaneFixture );
         return correct();
     }
 
-    @DynamicTest(order = 3, feedback = "The window with title 'Set Reminder' should appear")
+    @DynamicTest(order = 3) CheckResult Jlistsize() throws Exception {
+
+        if (jListFixture.contents().length != 0) {
+            throw new WrongAnswer("Jlist size should be 0");
+        }
+
+        frame.getSize();
+        return correct();
+    }
+
+    @DynamicTest(order = 4, feedback = "Default Close Operation should be Exit on Close")
+    CheckResult itShouldTestForDefaultCloseOperation() {
+        assertThat(frame.getDefaultCloseOperation())
+                .isEqualTo(JFrame.EXIT_ON_CLOSE);
+        return correct();
+    }
+
+    @DynamicTest(order = 5, feedback = "Size of Frame Should be - (500 x 300)")
+    CheckResult itShouldTestForCorrectFrameDimension() {
+
+        Dimension size = frame.getSize();
+
+        assertThat(size.getWidth())
+                .isEqualTo(500);
+        assertThat(size.getHeight())
+                .isEqualTo(300);
+
+        return correct();
+    }
+
+    @DynamicTest(order = 6, feedback = "Size of \"Scroll Pane\" Should be - (480 x 100)")
+    CheckResult itShouldTestForCorrectJScrollDimension() {
+
+        Dimension size = scrollPaneFixture.target().getSize();
+
+        System.out.println("Size = "+ size.getWidth()+"x"+ size.getHeight() );
+
+        assertThat(size.getWidth())
+                .isEqualTo(480);
+        assertThat(size.getHeight())
+                .isEqualTo(100);
+
+        return correct();
+    }
+
+    @DynamicTest(order = 7, feedback = "Location  of button \"ADD\" Should be - x= 50  and y = 220)")
+    CheckResult addButtonLocation() {
+
+        Point location = addButton.target().getLocation();
+
+        System.out.println("x= "+location.getX() + "; y= "+location.getY());
+        assertThat(location.getX())
+                .isEqualTo(50);
+        assertThat(location.getY())
+                .isEqualTo(220);
+
+        return correct();
+    }
+
+    @DynamicTest(order = 8, feedback = "The window with title 'Set Reminder' should appear")
     CheckResult test2() throws Exception {
         addButton.click();
         try {
@@ -86,33 +138,51 @@ public class TimeReminderApplicationTest extends SwingTest {
         return correct();
     }
 
-    @DynamicTest(order = 4, feedback = "The 'ADD' button should be disabled")
+    @DynamicTest(order = 9, feedback = "The 'ADD' button should be disabled")
     CheckResult testAddButtonDisableCheck() throws Exception {
         addButton.requireDisabled();
         return correct();
     }
 
-    @DynamicTest(order = 5, feedback = "The 'DELETE' button should be enabled")
+    @DynamicTest(order = 10, feedback = "The 'DELETE' button should be disabled")
     CheckResult testDeleteButtonDisableCheck() throws Exception {
-        deleteButton.requireEnabled();
+        deleteButton.requireDisabled();
         return correct();
     }
 
-    @DynamicTest(order = 6, feedback = "The 'EDIT' button should be disabled")
+    @DynamicTest(order = 11, feedback = "The 'EDIT' button should be disabled")
     CheckResult testEditButtonDisableCheck() throws Exception {
-        editButton.requireEnabled();
+        editButton.requireDisabled();
         return correct();
     }
 
-    @DynamicTest(order = 7,
+    @DynamicTest(order = 12, feedback = "Default Close Operation should be Exit on Close")
+    CheckResult rminderFrameDefaultCloseOperation() {
+     set_reminder.close();
+        set_reminder.requireNotVisible();
+        return correct();
+    }
+
+    @DynamicTest(order = 13,
             feedback = "The window with title 'Set Reminder' should disappear after 'cancel' button clicked")
     CheckResult test3() throws Exception {
+        addButton.click();
+        try {
+            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
+            setReminderToString = set_reminder.toString();
+            System.out.println(setReminderToString);
+        }
+        catch (WaitTimedOutError e) {
+            System.out.println("Timeout waiting for the window");
+            return wrong("Incorrect Reminder set up window");
+        }
+
         set_reminder.button("Cancel").click();
         set_reminder.requireNotVisible();
         return correct();
     }
 
-    @DynamicTest(order = 8,
+    @DynamicTest(order = 14,
             feedback = "The window with title 'Set Reminder' should disappear after 'OK' button clicked")
     CheckResult testOkButton() throws Exception {
         addButton.click();
@@ -125,13 +195,13 @@ public class TimeReminderApplicationTest extends SwingTest {
             System.out.println("Timeout waiting for the window");
             return wrong("Incorrect Reminder set up window");
         }
-        Class<? extends FrameFixture> aClass = set_reminder.getClass();
+
         set_reminder.button("OK").click();
         set_reminder.requireNotVisible();
         return correct();
     }
 
-    @DynamicTest(order = 9,
+    @DynamicTest(order = 15,
             feedback = "The Set Reminder window does not have all required components or correct names")
     CheckResult testLabelsReminder() throws Exception {
         addButton.click();
@@ -178,7 +248,7 @@ public class TimeReminderApplicationTest extends SwingTest {
         return correct();
     }
 
-    @DynamicTest(order = 10) CheckResult test5() throws Exception {
+    @DynamicTest(order = 16) CheckResult test5() throws Exception {
         setReminders();
         String[] contents = jListFixture.contents();
         for (int i = 0; i < contents.length; i++) {
@@ -198,7 +268,7 @@ public class TimeReminderApplicationTest extends SwingTest {
         return correct();
     }
 
-    @DynamicTest(order = 11) CheckResult testEditOption() throws Exception {
+    @DynamicTest(order = 17) CheckResult testEditOption() throws Exception {
         addText();
         String[] contents = jListFixture.contents();
         for (int i = 0; i < contents.length; i++) {
@@ -219,7 +289,7 @@ public class TimeReminderApplicationTest extends SwingTest {
         return correct();
     }
 
-    @DynamicTest(order = 12) CheckResult testDeleteOption() throws Exception {
+    @DynamicTest(order = 18) CheckResult testDeleteOption() throws Exception {
         String[] contents = jListFixture.contents();
         Iterator<String> iterator = Arrays.stream(contents).iterator();
         while (iterator.hasNext() && jListFixture.contents().length != 0) {
@@ -234,7 +304,7 @@ public class TimeReminderApplicationTest extends SwingTest {
         return correct();
     }
 
-    @DynamicTest(order = 13, feedback = "The window with title 'Set Reminder' should appear")
+    @DynamicTest(order = 19, feedback = "The window with title 'Set Reminder' should appear")
     CheckResult test6() throws Exception {
         addButton.click();
         try {

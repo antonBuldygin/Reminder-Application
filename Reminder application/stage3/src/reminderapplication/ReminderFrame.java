@@ -10,10 +10,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class ReminderFrame extends JFrame {
-    private final static Integer[] delays = {25, 15, 30, 5};
+    private final static Integer[] delays = {30, 25, 15, 5};
     private final static Integer[] repeatPeriod = {0, 5, 10, 20};
 
     JButton addButton;
+    JButton editButton;
+    JButton deleteButton;
     TimeReminderApplication tm;
     JTextField textField;
     JButton okButton;
@@ -30,20 +32,21 @@ public class ReminderFrame extends JFrame {
 
     Controller controller;
 
-    public ReminderFrame(TimeReminderApplication tm)
-    throws HeadlessException {
+    public ReminderFrame(TimeReminderApplication tm) throws HeadlessException {
         super("Set Reminder");
         setName("Set Reminder");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(500, 200);
         setBackground(Color.GRAY);
         setVisible(true);
         setResizable(false);
         setLocationRelativeTo(null);
 
-
         this.addButton = tm.addButton;
         this.tm = tm;
+
+
+        this.editButton = tm.editButton;
+        this.deleteButton = tm.deleteButton;
 
         textField = new JTextField();
         textField.setName("Field");
@@ -103,6 +106,8 @@ public class ReminderFrame extends JFrame {
                 System.out.println("Closed");
                 flag = false;
                 addButton.setEnabled(true);
+                deleteButton.setEnabled(true);
+                editButton.setEnabled(true);
                 e.getWindow().dispose();
 
             }
