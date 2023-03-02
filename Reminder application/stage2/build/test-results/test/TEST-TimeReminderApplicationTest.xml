@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TimeReminderApplicationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-02T06:47:05" hostname="ANTONHONOR" time="33.661">
+<testsuite name="TimeReminderApplicationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-02T08:03:35" hostname="ANTONHONOR" time="33.577">
   <properties/>
-  <testcase name="start" classname="TimeReminderApplicationTest" time="33.661"/>
+  <testcase name="start" classname="TimeReminderApplicationTest" time="33.577"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 ?[1;31m
@@ -102,10 +102,10 @@ Start test 18?[0m
 ?[0m?[1;31m
 Start test 19?[0m
 ?[0m?[0;34mReminder Frames list 0
-?[0;34morg.assertj.swing.fixture.FrameFixture@3ef3d5d4
+?[0;34morg.assertj.swing.fixture.FrameFixture@424c6a57
 ?[0m?[0;34mADD option Test reminder starts after set delay
 ?[0m?[0;34mNUMBER Reminder Text: Test reminder starts after set delay; Delay: 5; Period: 0;
-?[0m?[0;34morg.assertj.swing.fixture.FrameFixture@3ef3d5d4
+?[0m?[0;34morg.assertj.swing.fixture.FrameFixture@424c6a57
 ?[0m]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
