@@ -251,6 +251,7 @@ public class TimeReminderApplicationTest extends SwingTest {
     @DynamicTest(order = 16) CheckResult test5() throws Exception {
         setReminders();
         String[] contents = jListFixture.contents();
+        if (contents.length != 4) {throw new WrongAnswer("There are  4 reminders should be set");}
         for (int i = 0; i < contents.length; i++) {
             System.out.println(jListFixture.valueAt(i));
             if (!jListFixture.valueAt(i)
@@ -271,6 +272,7 @@ public class TimeReminderApplicationTest extends SwingTest {
     @DynamicTest(order = 17) CheckResult testEditOption() throws Exception {
         addText();
         String[] contents = jListFixture.contents();
+        if (contents.length != 4) {throw new WrongAnswer("There are  4 reminders should be set");}
         for (int i = 0; i < contents.length; i++) {
             System.out.println(jListFixture.valueAt(i));
             if (!jListFixture.valueAt(i).equals("Reminder Text: " + listOftext[i] + "; Delay: " +
@@ -291,6 +293,7 @@ public class TimeReminderApplicationTest extends SwingTest {
 
     @DynamicTest(order = 18) CheckResult testDeleteOption() throws Exception {
         String[] contents = jListFixture.contents();
+        if (contents.length != 4) {throw new WrongAnswer("There are  4 reminders should be set");}
         Iterator<String> iterator = Arrays.stream(contents).iterator();
         while (iterator.hasNext() && jListFixture.contents().length != 0) {
             System.out.println(jListFixture.contents().length + " length");

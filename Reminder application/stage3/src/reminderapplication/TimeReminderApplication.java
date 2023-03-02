@@ -78,6 +78,7 @@ public class TimeReminderApplication extends JFrame {
                 reminderFrame.flag = true;
                 reminderFrame.okButton.setEnabled(true);
                 System.out.println("Reminder Frames list " + model.size());
+                System.out.println("Reminder Frames list size " + b.getModel().getSize());
             }
             if (!reminderFrame.flag) {
                 reminderFrame.flag = true;

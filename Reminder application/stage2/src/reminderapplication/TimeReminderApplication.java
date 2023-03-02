@@ -55,8 +55,8 @@ public class TimeReminderApplication extends JFrame {
         editButton.setBounds(180, 220, 100, 30);
         deleteButton.setBounds(300, 220, 100, 30);
 
-        model = new Model();
-        b = new JList(model);
+
+        b = new JList();
         b.getLastVisibleIndex();
         b.setName("List of Reminders");
 
@@ -77,11 +77,11 @@ public class TimeReminderApplication extends JFrame {
                 reminderFrame.setVisible(true);
                 reminderFrame.flag = true;
                 reminderFrame.okButton.setEnabled(true);
-                System.out.println("Reminder Frames list " + model.size());
+                System.out.println("Reminder Frames list size " + b.getModel().getSize());
             }
             if (!reminderFrame.flag) {
                 reminderFrame.flag = true;
-                System.out.println(model.size());
+                System.out.println("Model size = "+model.size());
             }
         });
         b.getSelectionModel().addListSelectionListener(e -> {

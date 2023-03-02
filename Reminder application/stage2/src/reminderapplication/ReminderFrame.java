@@ -20,8 +20,7 @@ public class ReminderFrame extends JFrame {
     JTextField textField;
     JButton okButton;
     JButton cancelButton;
-    TimerTask task;
-    java.util.Timer timer;
+
     boolean flag = false;
     boolean toEdit = false;
     JLabel periodlabel;

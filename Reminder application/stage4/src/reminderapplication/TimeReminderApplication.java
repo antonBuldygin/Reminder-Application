@@ -80,11 +80,7 @@ public class TimeReminderApplication extends JFrame {
                 reminderFrame.okButton.setEnabled(true);
                 System.out.println("Reminder Frames list " + model.size());
             }
-            if (!reminderFrame.flag) {
-                reminderFrame.flag = true;
-                System.out.println(model.size());
-            }
-        });
+                    });
         b.getSelectionModel().addListSelectionListener(e -> {
             selectedValue = b.getSelectedValue();
 

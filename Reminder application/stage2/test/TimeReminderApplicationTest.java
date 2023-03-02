@@ -61,7 +61,7 @@ public class TimeReminderApplicationTest extends SwingTest {
 
     @DynamicTest(order = 2) CheckResult testButtons() {
         requireEnabled(addButton, deleteButton, editButton, jListFixture, scrollPaneFixture);
-        requireVisible(addButton, deleteButton,editButton, jListFixture, scrollPaneFixture );
+        requireVisible(addButton, deleteButton, editButton, jListFixture, scrollPaneFixture);
         return correct();
     }
 
@@ -77,8 +77,7 @@ public class TimeReminderApplicationTest extends SwingTest {
 
     @DynamicTest(order = 4, feedback = "Default Close Operation should be Exit on Close")
     CheckResult itShouldTestForDefaultCloseOperation() {
-        assertThat(frame.getDefaultCloseOperation())
-                .isEqualTo(JFrame.EXIT_ON_CLOSE);
+        assertThat(frame.getDefaultCloseOperation()).isEqualTo(JFrame.EXIT_ON_CLOSE);
         return correct();
     }
 
@@ -87,10 +86,8 @@ public class TimeReminderApplicationTest extends SwingTest {
 
         Dimension size = frame.getSize();
 
-        assertThat(size.getWidth())
-                .isEqualTo(500);
-        assertThat(size.getHeight())
-                .isEqualTo(300);
+        assertThat(size.getWidth()).isEqualTo(500);
+        assertThat(size.getHeight()).isEqualTo(300);
 
         return correct();
     }
@@ -100,12 +97,10 @@ public class TimeReminderApplicationTest extends SwingTest {
 
         Dimension size = scrollPaneFixture.target().getSize();
 
-        System.out.println("Size = "+ size.getWidth()+"x"+ size.getHeight() );
+        System.out.println("Size = " + size.getWidth() + "x" + size.getHeight());
 
-        assertThat(size.getWidth())
-                .isEqualTo(480);
-        assertThat(size.getHeight())
-                .isEqualTo(100);
+        assertThat(size.getWidth()).isEqualTo(480);
+        assertThat(size.getHeight()).isEqualTo(100);
 
         return correct();
     }
@@ -115,11 +110,9 @@ public class TimeReminderApplicationTest extends SwingTest {
 
         Point location = addButton.target().getLocation();
 
-        System.out.println("x= "+location.getX() + "; y= "+location.getY());
-        assertThat(location.getX())
-                .isEqualTo(50);
-        assertThat(location.getY())
-                .isEqualTo(220);
+        System.out.println("x= " + location.getX() + "; y= " + location.getY());
+        assertThat(location.getX()).isEqualTo(50);
+        assertThat(location.getY()).isEqualTo(220);
 
         return correct();
     }
@@ -158,7 +151,7 @@ public class TimeReminderApplicationTest extends SwingTest {
 
     @DynamicTest(order = 12, feedback = "Default Close Operation should be Exit on Close")
     CheckResult rminderFrameDefaultCloseOperation() {
-     set_reminder.close();
+        set_reminder.close();
         set_reminder.requireNotVisible();
         return correct();
     }
@@ -198,6 +191,7 @@ public class TimeReminderApplicationTest extends SwingTest {
 
         set_reminder.button("OK").click();
         set_reminder.requireNotVisible();
+
         return correct();
     }
 
@@ -248,85 +242,70 @@ public class TimeReminderApplicationTest extends SwingTest {
         return correct();
     }
 
-    @DynamicTest(order = 16) CheckResult test5() throws Exception {
-        setReminders();
-        String[] contents = jListFixture.contents();
-        for (int i = 0; i < contents.length; i++) {
-            System.out.println(jListFixture.valueAt(i));
-            if (!jListFixture.valueAt(i)
-                             .equals("Reminder Text: " + listOftext[i] + "; Delay: " + delayMap.get(i) +
-                                     "; Period: " + periodMap.get(i) + ";")) {
-                throw new WrongAnswer(
-                        "Reminder text should be \"Reminder Text: " + listOftext[i] + ";" + " Delay: " +
-                                delayMap.get(i) + "; Period: " + periodMap.get(i) + ";" + " but it was " +
-                                jListFixture.valueAt(i));
-            }
-            jListFixture.clickItem(i).toString();
-            System.out.println("List size " + contents.length);
+    @DynamicTest(order = 16, feedback = "Wrong text in Reminder JTextField") CheckResult JTextFieldtest() {
 
-        }
-        return correct();
-    }
-
-    @DynamicTest(order = 17) CheckResult testEditOption() throws Exception {
-        addText();
-        String[] contents = jListFixture.contents();
-        for (int i = 0; i < contents.length; i++) {
-            System.out.println(jListFixture.valueAt(i));
-            if (!jListFixture.valueAt(i).equals("Reminder Text: " + listOftext[i] + "; Delay: " +
-                    delayMap.get(contents.length - i - 1) + "; " + "Period: " +
-                    periodMap.get(contents.length - i - 1) + ";")) {
-                throw new WrongAnswer(
-                        "Reminder text should be \"Reminder Text: " + listOftext[i] + "; Delay: " +
-                                delayMap.get(contents.length - i - 1) + "; Period: " +
-                                periodMap.get(contents.length - i - 1) + ";" + " but it was " +
-                                jListFixture.valueAt(i));
-            }
-            jListFixture.clickItem(i).toString();
-            System.out.println("List size " + contents.length);
-
-        }
-        return correct();
-    }
-
-    @DynamicTest(order = 18) CheckResult testDeleteOption() throws Exception {
-        String[] contents = jListFixture.contents();
-        Iterator<String> iterator = Arrays.stream(contents).iterator();
-        while (iterator.hasNext() && jListFixture.contents().length != 0) {
-            System.out.println(jListFixture.contents().length + " length");
-            jListFixture.clickItem(0);
-            Thread.sleep(200);
-            deleteButton.click();
-        }
-        if (jListFixture.contents().length != 0) {
-          throw   new WrongAnswer("all reminders should be deleted from 'Reminder Application' window ");
-        }
-        return correct();
-    }
-
-    @DynamicTest(order = 19, feedback = "The window with title 'Set Reminder' should appear")
-    CheckResult test6() throws Exception {
-        addButton.click();
         try {
             set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
             System.out.println(set_reminder.toString());
         }
         catch (WaitTimedOutError e) {
             System.out.println("Catch");
-            return wrong("Timeout waiting for ");
+
         }
-        set_reminder.requireTitle("Set Reminder");
-        set_reminder.textBox("Field").setText("Test reminder starts after set delay");
-        set_reminder.comboBox(setDelayReminderFrame).selectItem(3);
-        set_reminder.button("OK").click();
-        Thread.sleep(8000);
-        try {
-            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            System.out.println(set_reminder.toString());
+        for (int i = 0; i < listOftext.length; i++) {
+
+            set_reminder.textBox("Field").setText(listOftext[i]);
+            System.out.println(set_reminder.textBox("Field").text());
+            System.out.println(listOftext[i]);
+            set_reminder.textBox("Field").requireText(listOftext[i]);
+
+
         }
-        catch (WaitTimedOutError e) {
-            System.out.println("Catch");
-            return wrong("Timeout waiting for ");
+        return correct();
+    }
+
+    @DynamicTest(order = 17, feedback = "Wrong text in Reminder set delay Combobox or wrong text in Delays Label")
+    CheckResult delayComboBoxtest() {
+
+        String[] contents = set_reminder.comboBox(setDelayReminderFrame).contents();
+
+        for (int i = 0; i < contents.length; i++) {
+
+            set_reminder.comboBox(setDelayReminderFrame).selectItem(i);
+            System.out.println(set_reminder.comboBox(setDelayReminderFrame).selectedItem());
+
+
+            System.out.println(delayMap.get(i));
+            System.out.println(  "Delays label text "+set_reminder.label("Delays Label").text());
+            set_reminder.label("Delays Label").requireText(delayMap.get(i).toString());
+
+            if (Integer.parseInt(set_reminder.comboBox(setDelayReminderFrame).selectedItem()) != (delayMap.get(i))) {
+                throw new WrongAnswer(
+                        "set delay Combobox required with value " + delayMap.get(i) + " but it was " +
+                                "with value " + set_reminder.comboBox(setDelayReminderFrame).selectedItem());
+            }
+        }
+
+        return correct();
+    }
+
+    @DynamicTest(order = 18, feedback = "Wrong text in Reminder set period Combobox")
+    CheckResult periodComboBoxtest() {
+
+        String[] contents = set_reminder.comboBox(setPeriodReminderFrame).contents();
+        for (int i = 0; i < contents.length; i++) {
+            set_reminder.comboBox(setPeriodReminderFrame).selectItem(i);
+            System.out.println(set_reminder.comboBox(setPeriodReminderFrame).selectedItem());
+            System.out.println(periodMap.get(i));
+
+            System.out.println(  "Period label text "+set_reminder.label("Period label").text());
+            set_reminder.label("Period label").requireText(periodMap.get(i).toString());
+
+            if (Integer.parseInt(set_reminder.comboBox(setPeriodReminderFrame).selectedItem()) != (periodMap.get(i))) {
+                throw new WrongAnswer(
+                        "set period Combobox required with value " + periodMap.get(i) + " but it was " +
+                                "with value " + set_reminder.comboBox(setPeriodReminderFrame).selectedItem());
+            }
         }
         return correct();
     }
@@ -337,54 +316,8 @@ public class TimeReminderApplicationTest extends SwingTest {
         return first;
     }
 
-    private void addText() {
-        String[] contents = jListFixture.contents();
-        System.out.println(contents.length);
-        for (int i = contents.length; i > 0; i--) {
-            jListFixture.clickItem(i - 1);
-            System.out.println(jListFixture.valueAt(i - 1));
-            editButton.click();
-            try {
-                set_reminder =
-                        WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-                System.out.println(set_reminder.toString());
-            }
-            catch (WaitTimedOutError e) {
-                System.out.println("Catch");
 
-            }
-            set_reminder.textBox("Field").enterText(text5ForReminder);
-            set_reminder.textBox("Field").enterText(text4ForReminder);
-            listOftext[i - 1] = listOftext[i - 1] + text5ForReminder + text4ForReminder;
-            set_reminder.comboBox(setDelayReminderFrame).selectItem(contents.length - i);
-            set_reminder.comboBox(setPeriodReminderFrame).selectItem(contents.length - i);
-            set_reminder.button("OK").click();
-
-
-        }
-    }
-
-    private void setReminders() {
-        for (int i = 1; i < 4; i++) {
-            if (i > 1) {
-                addButton.click();
-            }
-            try {
-                set_reminder =
-                        WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-                System.out.println(set_reminder.toString());
-            }
-            catch (WaitTimedOutError e) {
-                System.out.println("Catch");
-
-            }
-            set_reminder.textBox("Field").setText(listOftext[i]);
-            set_reminder.comboBox(setDelayReminderFrame).selectItem(i);
-            set_reminder.comboBox(setPeriodReminderFrame).selectItem(i);
-            set_reminder.button("OK").click();
-
-
-        }
-    }
 }
+
+
 
