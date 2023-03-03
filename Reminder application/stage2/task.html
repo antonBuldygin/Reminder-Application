@@ -1,0 +1,88 @@
+<html>
+<h2>Description</h2>
+
+<p><strong>The looks are not enough. You need to add functionality too. </strong></p>
+
+<p>Now that you have a application window, it is a good time to learn how to provide functionality to those menus and buttons.</p>
+
+<p>Since in this project the dropdown menu contains different inputs for the application, it is required that any change in its selection is noted by the application.</p>
+
+<p>For the dropdown menu, we would need an item listener as the dropdown menu options are being selected and de-selected. When any item is selected then an item-selection event occurs and the&nbsp;<code>itemStateChanged()</code>&nbsp;method is invoked.</p>
+
+<p>Therefore you need to implement your own logic for itemStateChanged() method.</p>
+
+<p>Hint : In this method you must be able to identify which reminder is being set and at which intervals must the user be reminded.</p>
+
+<p>&nbsp;</p>
+
+<p>Along with that, we have added a button in our application and right now it is unable to do anything when its clicked.&nbsp;</p>
+
+<p>To make the button come alive, an action listener must be added to it. An action listener can be added by using the addActionListener() method to each button that is declared in our application. Using action listeners you can handle events such as what must happen when the end user clicks on a button in the application window.</p>
+
+<p>Note : ActionListener is an interface and addActionListener() allows you to bind the interface to your individual button directly. More info&nbsp;<a href="https://www.javatpoint.com/java-actionlistener" rel="noopener noreferrer nofollow">here</a>.</p>
+
+<p>Now that button click event is handled, you need to define what must happen when a certain button is clicked. To define that you need to implement logic for the actionPerformed() method which comes in ActionListener interface.</p>
+
+<p><strong>In this stage, after clicking the button a new screen must appear on your window with message related to the reminder that has been set.</strong></p>
+
+<p>So if you have a reminder for drinking water every 4 minutes, then your new screen should say something like &quot;Its time to drink water&quot;.</p>
+
+<p>This screen should have only one button on it that is capable of stopping the reminder. So set a button for this screen that would stop reminder and let you get back to the original screen of the application. Do not worry about the reminder timer logic at this stage, just implement the logic that would give back the original screen.</p>
+
+<p><strong>It is now time to add listeners to your menu options and buttons , so that you can make your reminder app do some real work.</strong></p>
+
+<p><strong>You will also need to set up a new window that will appear when a reminder has been set. The new window must overwrite the previous content and refresh to new content.</strong></p>
+
+<p><strong>Note : You must be able to revert to original opening&nbsp;window when needed so form your logic with that in mind.</strong></p>
+
+<p>&nbsp;</p>
+
+<h2>Objectives</h2>
+
+<p>Add addActionListener()&nbsp; to the button &quot;ADD&quot; with the name <code>Add Reminder</code>&nbsp;. Clicking on this button a new screen&nbsp; with the name <code>Set Reminder</code>&nbsp;must appear. The title of this window should be&nbsp;<code>Set Reminder</code>&nbsp;.&nbsp;</p>
+
+<p>The window should contain the following components:</p>
+
+<ul>
+  <li><code>JTextField</code>&nbsp;with the <code>Field</code>&nbsp;&nbsp;name;</li>
+  <li><code>JLabel</code>&nbsp;&quot;Reminder Text&quot; with the <code>Reminder Text Label</code> name. This label should be located over <code>Field</code>&nbsp;<code> JTextField</code>&nbsp;;</li>
+  <li><code>JButton</code>&nbsp;&quot;OK&quot;&nbsp;with the&nbsp; <code>OK</code>name;</li>
+  <li><code>JButton</code>&nbsp;&quot;Cancel&quot;&nbsp;with the <code>Cancel</code>name;</li>
+</ul>
+
+<ul>
+  <li><code>JComboBox</code>&nbsp;with the <code>set Period</code> name;&nbsp;</li>
+  <li><code>JLabel</code>&nbsp;with the <code>Period label</code> name.&nbsp; This label should located beneth&nbsp;<code>set Period</code>&nbsp;&nbsp;<code>JComboBox</code>&nbsp;;&nbsp;</li>
+  <li><code>JLabel</code>&nbsp;&quot;Set Period&quot; with the <code>Set Repeat</code>&nbsp; &nbsp; name. This label should located over&nbsp;<code>set Period</code>&nbsp;&nbsp;<code>JComboBox</code> ;</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<ul>
+  <li><code>JComboBox</code>&nbsp;with the <code>set Delay</code>&nbsp;name;&nbsp;</li>
+  <li><code>JLabel</code>&nbsp;&quot;Set Delay&quot; with the <code>Set Delay Label</code>&nbsp;name.&nbsp;This label should located over <code>set Delay</code>&nbsp; <code>JComboBox</code>&nbsp;;</li>
+  <li><code>JLabel</code>&nbsp;&nbsp;with the <code>Delays Label </code>name. This label should located beneth&nbsp;<code>set Delay</code>&nbsp;&nbsp;<code>JComboBox</code>&nbsp;.</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<h2>Examples</h2>
+
+<p><img alt="" height="364" name="image.png" src="https://ucarecdn.com/69b7c970-235b-4f06-a668-79fd2262e58c/" width="609" /></p>
+
+<p>&nbsp;</p>
+
+<p>Clicking on &quot;OK&quot; or &quot;Cancel&quot; buttons should close the&nbsp;<code>Set Reminder</code> window and only <code>Reminder application</code>&nbsp;window should be visible:&nbsp;</p>
+
+<p><img alt="" height="365" name="image.png" src="https://ucarecdn.com/19636902-2613-4bbe-9383-13edf3435f84/" width="611" /></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><img alt="" height="239" name="image.png" src="https://ucarecdn.com/9daf3ca9-218c-43c4-ba3d-72d2a3ef2d80/" width="607" /></p>
+
+<p>&nbsp;</p>
+
+<p><img alt="" height="245" name="image.png" src="https://ucarecdn.com/3c1de277-5cc1-482c-9ba3-55a59a46a143/" width="605" /></p>
+</html>

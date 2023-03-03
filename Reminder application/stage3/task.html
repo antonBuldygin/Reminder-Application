@@ -1,0 +1,62 @@
+<html lang="en">
+<h2>Description</h2>
+
+<p><strong>Although your app works, it still is not able to remind you of anything. For that to happen, you need to be able to fetch current time and be able to run a timer to track when a reminder should pop up.</strong></p>
+
+<p><strong>Timer class will be used to implement the timer logic.</strong></p>
+
+<p>To implement timer logic, you will be using Timer class and its methods. It can be read about&nbsp;<a href="https://www.baeldung.com/java-timer-and-timertask" rel="noopener noreferrer nofollow">here</a>.</p>
+
+<p>For additional info, try this <a href="https://www.iitk.ac.in/esc101/05Aug/tutorial/essential/threads/timer.html" rel="noopener noreferrer nofollow">link</a>.</p>
+
+<p>You should take the time interval from the main screen and be able to pop up the reminder after the selected minutes have passed in real time.</p>
+
+<p>Similar logic can be used for minimizing the window after few seconds automatically.</p>
+
+<p>As for the window pop-up feature, you can research this <a href="https://docs.oracle.com/javase/8/docs/api/java/awt/Frame.html" rel="noopener noreferrer nofollow">link</a>.&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><strong>So in this stage you will be completing the following objectives :</strong></p>
+
+<p><strong>1. Implement window pop-up and disappearing when required.</strong></p>
+
+<p><strong>2. Implement timer logic for the application and bind that to window pop-up feature.</strong></p>
+
+<p>&nbsp;</p>
+
+<p><strong>At the end of this stage, you will have a complete standalone reminder application. Congratulations!</strong></p>
+
+<p>&nbsp;</p>
+
+<h2>Objectives</h2>
+
+<ul>
+    <li>To add actionlistener to &ldquo;OK&rdquo; button in Set Reminders window. This button should create new reminder, which should be instance of the Set reminder window. The reminder should be stored in the JList which we previously added to Reminder application window.</li>
+    <li>Each line in the JList should consists of the following text &ndash; &ldquo;Reminder Text: &ldquo;some text entered by user&rdquo;; Delay: &ldquo;&nbsp;&nbsp; &nbsp;one of the options of set Delay comboBox &ndash; 30 by default&rdquo;; Period: &ldquo;one of the options of set Delay comboBox &ndash; 0 by default&rdquo;</li>
+    <li>Clicking OK button data from Set Reminders window like text from Reminder text, time in seconds represented in Set delay comboBox and Set Period comboBox should be used to set timer task for each reminder.&nbsp;</li>
+    <li>When set delay time ended Set Reminders window &nbsp;with the instance of previously created reminder should appear on the screen and some sound (music or sound ) should continue for several seconds after this the reminder task activity should be stopped and reminder disappear from the screen.&nbsp;</li>
+</ul>
+
+<p>Very important that figures in Set Delay &nbsp;comboBox and period Delay comboBox should follow in the following order:</p>
+
+<p>For set delay &ndash; 30, 25, 15, 5;<br />
+    For set Period &ndash; 0, 5, 10, 20;</p>
+
+<p>This order will be used for testing purpose of your application.&nbsp;</p>
+
+<p>Note* - set Period equaled to 0 means that the reminder will appear only once. Other periods like 5, 10, 20 seconds means that Reminder window should be repeated every 5, 10, 20 seconds.<br />
+    &nbsp;</p>
+
+<h2>Examples</h2>
+
+<p><strong>Example 1:</strong><em>&nbsp;Example of the Reminder Application window with JList of set reminders:&nbsp;</em></p>
+
+<p><img alt="" height="379" name="image.png" src="https://ucarecdn.com/2c8038fb-6552-4993-854a-c1d7538c3b49/" width="619" /></p>
+
+<p>&nbsp;</p>
+
+<p><strong>Example 1:</strong><em>&nbsp;Example of Set Reminders window &nbsp;with the instance of previously created reminder appear on the screen after set delay time ended </em></p>
+
+<p><img alt="" height="371" name="image.png" src="https://ucarecdn.com/a6cc9c28-9dcb-4907-937c-8a752a8e0063/" width="620" /></p>
+</html>
