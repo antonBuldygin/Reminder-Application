@@ -13,8 +13,6 @@ import reminderapplication.TimeReminderApplication;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Optional;
 
@@ -199,43 +197,43 @@ public class TimeReminderApplicationTest extends SwingTest {
             feedback = "The Set Reminder window does not have all required components or correct names")
     CheckResult testLabelsReminder() throws Exception {
         addButton.click();
-        Optional field = componentsAvailability(textFieldReminderFrame);
+        Optional<Component> field = componentsAvailability(textFieldReminderFrame);
         if (!field.isPresent() || !(field.get() instanceof JTextField)) {
             throw new WrongAnswer("JTextField required with name " + textFieldReminderFrame);
         }
-        Optional cancel = componentsAvailability(cancelButtonReminderFrame);
+        Optional<Component> cancel = componentsAvailability(cancelButtonReminderFrame);
         if (!cancel.isPresent() || !(cancel.get() instanceof JButton)) {
             throw new WrongAnswer("JButton required with name " + cancelButtonReminderFrame);
         }
-        Optional ok = componentsAvailability(okButtonReminderFrame);
+        Optional<Component> ok = componentsAvailability(okButtonReminderFrame);
         if (!ok.isPresent() || !(ok.get() instanceof JButton)) {
             throw new WrongAnswer("JButton required with name " + okButtonReminderFrame);
         }
-        Optional textLabel = componentsAvailability(textLabelReminderFrame);
+        Optional<Component> textLabel = componentsAvailability(textLabelReminderFrame);
         if (!textLabel.isPresent() || !(textLabel.get() instanceof JLabel)) {
             throw new WrongAnswer("JLabel required with name " + textLabelReminderFrame);
         }
-        Optional delaysLabel = componentsAvailability(delaysLabelReminderFrame);
+        Optional<Component> delaysLabel = componentsAvailability(delaysLabelReminderFrame);
         if (!delaysLabel.isPresent() || !(delaysLabel.get() instanceof JLabel)) {
             throw new WrongAnswer("JLabel required with name " + delaysLabelReminderFrame);
         }
-        Optional setDelaysLabel = componentsAvailability(setDelayLabelReminderFrame);
+        Optional<Component> setDelaysLabel = componentsAvailability(setDelayLabelReminderFrame);
         if (!setDelaysLabel.isPresent() || !(setDelaysLabel.get() instanceof JLabel)) {
             throw new WrongAnswer("JLabel required with name " + setDelayLabelReminderFrame);
         }
-        Optional setRepeatLabelRM = componentsAvailability(setRepeatLabelReminderFrame);
+        Optional<Component> setRepeatLabelRM = componentsAvailability(setRepeatLabelReminderFrame);
         if (!setRepeatLabelRM.isPresent() || !(setRepeatLabelRM.get() instanceof JLabel)) {
             throw new WrongAnswer("JLabel required with name " + setRepeatLabelReminderFrame);
         }
-        Optional setDelayRM = componentsAvailability(setDelayReminderFrame);
+        Optional<Component> setDelayRM = componentsAvailability(setDelayReminderFrame);
         if (!setDelayRM.isPresent() || !(setDelayRM.get() instanceof JComboBox)) {
             throw new WrongAnswer("JComboBox required with name " + setDelayReminderFrame);
         }
-        Optional setPeriodRM = componentsAvailability(setPeriodReminderFrame);
+        Optional<Component> setPeriodRM = componentsAvailability(setPeriodReminderFrame);
         if (!setPeriodRM.isPresent() || !(setPeriodRM.get() instanceof JComboBox)) {
             throw new WrongAnswer("JComboBox required with name " + setPeriodReminderFrame);
         }
-        Optional periodLabelRM = componentsAvailability(periodLabelReminderFrame);
+        Optional<Component> periodLabelRM = componentsAvailability(periodLabelReminderFrame);
         if (!periodLabelRM.isPresent() || !(periodLabelRM.get() instanceof JLabel)) {
             throw new WrongAnswer("JLabel required with name " + periodLabelReminderFrame);
         }
@@ -259,12 +257,12 @@ public class TimeReminderApplicationTest extends SwingTest {
             System.out.println(listOftext[i]);
             set_reminder.textBox("Field").requireText(listOftext[i]);
 
-
         }
         return correct();
     }
 
-    @DynamicTest(order = 17, feedback = "Wrong text in Reminder set delay Combobox or wrong text in Delays Label")
+    @DynamicTest(order = 17,
+            feedback = "Wrong text in Reminder set delay Combobox or wrong text in Delays Label")
     CheckResult delayComboBoxtest() {
 
         String[] contents = set_reminder.comboBox(setDelayReminderFrame).contents();
@@ -274,12 +272,12 @@ public class TimeReminderApplicationTest extends SwingTest {
             set_reminder.comboBox(setDelayReminderFrame).selectItem(i);
             System.out.println(set_reminder.comboBox(setDelayReminderFrame).selectedItem());
 
-
             System.out.println(delayMap.get(i));
-            System.out.println(  "Delays label text "+set_reminder.label("Delays Label").text());
+            System.out.println("Delays label text " + set_reminder.label("Delays Label").text());
             set_reminder.label("Delays Label").requireText(delayMap.get(i).toString());
 
-            if (Integer.parseInt(set_reminder.comboBox(setDelayReminderFrame).selectedItem()) != (delayMap.get(i))) {
+            if (Integer.parseInt(set_reminder.comboBox(setDelayReminderFrame).selectedItem()) !=
+                    (delayMap.get(i))) {
                 throw new WrongAnswer(
                         "set delay Combobox required with value " + delayMap.get(i) + " but it was " +
                                 "with value " + set_reminder.comboBox(setDelayReminderFrame).selectedItem());
@@ -298,10 +296,11 @@ public class TimeReminderApplicationTest extends SwingTest {
             System.out.println(set_reminder.comboBox(setPeriodReminderFrame).selectedItem());
             System.out.println(periodMap.get(i));
 
-            System.out.println(  "Period label text "+set_reminder.label("Period label").text());
+            System.out.println("Period label text " + set_reminder.label("Period label").text());
             set_reminder.label("Period label").requireText(periodMap.get(i).toString());
 
-            if (Integer.parseInt(set_reminder.comboBox(setPeriodReminderFrame).selectedItem()) != (periodMap.get(i))) {
+            if (Integer.parseInt(set_reminder.comboBox(setPeriodReminderFrame).selectedItem()) !=
+                    (periodMap.get(i))) {
                 throw new WrongAnswer(
                         "set period Combobox required with value " + periodMap.get(i) + " but it was " +
                                 "with value " + set_reminder.comboBox(setPeriodReminderFrame).selectedItem());
@@ -310,12 +309,11 @@ public class TimeReminderApplicationTest extends SwingTest {
         return correct();
     }
 
-    private Optional componentsAvailability(String name) {
+    private Optional<Component> componentsAvailability(String name) {
         Optional<Component> first = getAllComponents(set_reminder.target()).stream().filter(it ->
                 it.getName() != null && it.getName().equals(name)).findFirst();
         return first;
     }
-
 
 }
 

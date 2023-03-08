@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TimeReminderApplicationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-02T15:59:20" hostname="ANTONHONOR" time="6.234">
+<testsuite name="TimeReminderApplicationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-08T06:52:24" hostname="ANTONHONOR" time="6.199">
   <properties/>
-  <testcase name="start" classname="TimeReminderApplicationTest" time="6.234"/>
+  <testcase name="start" classname="TimeReminderApplicationTest" time="6.199"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 ?[1;31m
@@ -21,7 +21,7 @@ Start test 7?[0m
 ?[0m?[1;31m
 Start test 8?[0m
 ?[0;34mReminder Frames list size 0
-?[0;34morg.assertj.swing.fixture.FrameFixture@60b2c8b7
+?[0;34morg.assertj.swing.fixture.FrameFixture@3fff55f0
 ?[0m?[1;31m
 Start test 9?[0m
 ?[1;31m
@@ -34,18 +34,18 @@ Start test 12?[0m
 ?[1;31m
 Start test 13?[0m
 ?[0m?[0;34mReminder Frames list size 0
-?[0;34morg.assertj.swing.fixture.FrameFixture@6155b5e0
+?[0;34morg.assertj.swing.fixture.FrameFixture@50fdf6da
 ?[0m?[0;34mCancel null
 ?[0m?[1;31m
 Start test 14?[0m
 ?[0m?[0;34mReminder Frames list size 0
-?[0;34morg.assertj.swing.fixture.FrameFixture@97c3ab9
+?[0;34morg.assertj.swing.fixture.FrameFixture@23f6c736
 ?[0m?[1;31m
 Start test 15?[0m
 ?[0m?[0;34mReminder Frames list size 0
 ?[1;31m
 Start test 16?[0m
-?[0;34morg.assertj.swing.fixture.FrameFixture@4331e62c
+?[0;34morg.assertj.swing.fixture.FrameFixture@247d1377
 ?[0m?[0;34m
 ?[0m?[0;34m
 ?[0m?[0;34mWake up

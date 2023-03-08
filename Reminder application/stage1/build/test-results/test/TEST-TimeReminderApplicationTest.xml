@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TimeReminderApplicationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-02T15:58:09" hostname="ANTONHONOR" time="0.882">
+<testsuite name="TimeReminderApplicationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-08T06:52:14" hostname="ANTONHONOR" time="1.146">
   <properties/>
-  <testcase name="start" classname="TimeReminderApplicationTest" time="0.882"/>
+  <testcase name="start" classname="TimeReminderApplicationTest" time="1.146"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 ?[1;31m

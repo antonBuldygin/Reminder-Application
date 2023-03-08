@@ -17,7 +17,7 @@
 [0m[1;31m
 Start test 8[0m
 $[0;34mReminder Frames list size 0
-8[0;34morg.assertj.swing.fixture.FrameFixture@60b2c8b7
+8[0;34morg.assertj.swing.fixture.FrameFixture@3fff55f0
 [0m[1;31m
 Start test 9[0m
 [1;31m
@@ -30,18 +30,18 @@
 [1;31m
 Start test 13[0m
 ([0m[0;34mReminder Frames list size 0
-8[0;34morg.assertj.swing.fixture.FrameFixture@6155b5e0
+8[0;34morg.assertj.swing.fixture.FrameFixture@50fdf6da
 [0m[0;34mCancel null
 [0m[1;31m
 Start test 14[0m
 ([0m[0;34mReminder Frames list size 0
-7[0;34morg.assertj.swing.fixture.FrameFixture@97c3ab9
+8[0;34morg.assertj.swing.fixture.FrameFixture@23f6c736
 [0m[1;31m
 Start test 15[0m
 ([0m[0;34mReminder Frames list size 0
 [1;31m
 Start test 16[0m
-8[0;34morg.assertj.swing.fixture.FrameFixture@4331e62c
+8[0;34morg.assertj.swing.fixture.FrameFixture@247d1377
 [0m[0;34m
 [0m[0;34m
 [0m[0;34mWake up
