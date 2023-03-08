@@ -31,7 +31,9 @@ subprojects {
     dependencies {
         testImplementation 'com.github.hyperskill:hs-test:release-SNAPSHOT'
     }
-
+    dependencies {
+        implementation 'ch.qos.logback:logback-classic:1.2.11'
+    }
     configurations.all {
         resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
     }

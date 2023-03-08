@@ -4,10 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.IOException;
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class ReminderFrame extends JFrame {
     private final static Integer[] delays = {30, 25, 15, 5};

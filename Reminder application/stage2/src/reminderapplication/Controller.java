@@ -2,10 +2,6 @@ package reminderapplication;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Controller implements ActionListener {
 
