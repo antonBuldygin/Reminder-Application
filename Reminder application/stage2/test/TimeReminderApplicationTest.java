@@ -198,43 +198,43 @@ public class TimeReminderApplicationTest extends SwingTest {
     CheckResult testLabelsReminder() throws Exception {
         addButton.click();
         Optional<Component> field = componentsAvailability(textFieldReminderFrame);
-        if (!field.isPresent() || !(field.get() instanceof JTextField)) {
+        if (field.isEmpty() || !(field.get() instanceof JTextField)) {
             throw new WrongAnswer("JTextField required with name " + textFieldReminderFrame);
         }
         Optional<Component> cancel = componentsAvailability(cancelButtonReminderFrame);
-        if (!cancel.isPresent() || !(cancel.get() instanceof JButton)) {
+        if (cancel.isEmpty() || !(cancel.get() instanceof JButton)) {
             throw new WrongAnswer("JButton required with name " + cancelButtonReminderFrame);
         }
         Optional<Component> ok = componentsAvailability(okButtonReminderFrame);
-        if (!ok.isPresent() || !(ok.get() instanceof JButton)) {
+        if (ok.isEmpty() || !(ok.get() instanceof JButton)) {
             throw new WrongAnswer("JButton required with name " + okButtonReminderFrame);
         }
         Optional<Component> textLabel = componentsAvailability(textLabelReminderFrame);
-        if (!textLabel.isPresent() || !(textLabel.get() instanceof JLabel)) {
+        if (textLabel.isEmpty() || !(textLabel.get() instanceof JLabel)) {
             throw new WrongAnswer("JLabel required with name " + textLabelReminderFrame);
         }
         Optional<Component> delaysLabel = componentsAvailability(delaysLabelReminderFrame);
-        if (!delaysLabel.isPresent() || !(delaysLabel.get() instanceof JLabel)) {
+        if (delaysLabel.isEmpty() || !(delaysLabel.get() instanceof JLabel)) {
             throw new WrongAnswer("JLabel required with name " + delaysLabelReminderFrame);
         }
         Optional<Component> setDelaysLabel = componentsAvailability(setDelayLabelReminderFrame);
-        if (!setDelaysLabel.isPresent() || !(setDelaysLabel.get() instanceof JLabel)) {
+        if (setDelaysLabel.isEmpty() || !(setDelaysLabel.get() instanceof JLabel)) {
             throw new WrongAnswer("JLabel required with name " + setDelayLabelReminderFrame);
         }
         Optional<Component> setRepeatLabelRM = componentsAvailability(setRepeatLabelReminderFrame);
-        if (!setRepeatLabelRM.isPresent() || !(setRepeatLabelRM.get() instanceof JLabel)) {
+        if (setRepeatLabelRM.isEmpty() || !(setRepeatLabelRM.get() instanceof JLabel)) {
             throw new WrongAnswer("JLabel required with name " + setRepeatLabelReminderFrame);
         }
         Optional<Component> setDelayRM = componentsAvailability(setDelayReminderFrame);
-        if (!setDelayRM.isPresent() || !(setDelayRM.get() instanceof JComboBox)) {
+        if (setDelayRM.isEmpty() || !(setDelayRM.get() instanceof JComboBox)) {
             throw new WrongAnswer("JComboBox required with name " + setDelayReminderFrame);
         }
         Optional<Component> setPeriodRM = componentsAvailability(setPeriodReminderFrame);
-        if (!setPeriodRM.isPresent() || !(setPeriodRM.get() instanceof JComboBox)) {
+        if (setPeriodRM.isEmpty() || !(setPeriodRM.get() instanceof JComboBox)) {
             throw new WrongAnswer("JComboBox required with name " + setPeriodReminderFrame);
         }
         Optional<Component> periodLabelRM = componentsAvailability(periodLabelReminderFrame);
-        if (!periodLabelRM.isPresent() || !(periodLabelRM.get() instanceof JLabel)) {
+        if (periodLabelRM.isEmpty() || !(periodLabelRM.get() instanceof JLabel)) {
             throw new WrongAnswer("JLabel required with name " + periodLabelReminderFrame);
         }
         return correct();
