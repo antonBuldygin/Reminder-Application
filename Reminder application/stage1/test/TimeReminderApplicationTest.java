@@ -63,7 +63,17 @@ public class TimeReminderApplicationTest extends SwingTest {
         return correct();
     }
 
-    @DynamicTest(order = 6, feedback = "Size of \"Scroll Pane\" Should be - (480 x 100)")
+    @DynamicTest(order = 6, feedback = "The frame should not be resizable")
+    CheckResult testFrameIsNotResizable() {
+
+      ;
+
+        assertThat(frame.isResizable()).isEqualTo(false);
+
+        return correct();
+    }
+
+    @DynamicTest(order = 7, feedback = "Size of \"Scroll Pane\" Should be - (480 x 100)")
     CheckResult itShouldTestForCorrectJScrollDimension() {
 
         Dimension size = scrollPaneFixture.target().getSize();
@@ -76,7 +86,7 @@ public class TimeReminderApplicationTest extends SwingTest {
         return correct();
     }
 
-    @DynamicTest(order = 7, feedback = "Location  of button \"ADD\" Should be - x= 50  and y = 220)")
+    @DynamicTest(order = 8, feedback = "Location  of button \"ADD\" Should be - x= 50  and y = 220)")
     CheckResult addButtonLocation() {
 
         Point location = addButton.target().getLocation();
