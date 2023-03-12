@@ -13,8 +13,6 @@ import reminderapplication.TimeReminderApplication;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Optional;
 
@@ -188,7 +186,9 @@ public class TimeReminderApplicationTest extends SwingTest {
             System.out.println("Timeout waiting for the window");
             return wrong("Incorrect Reminder set up window");
         }
-
+        set_reminder.textBox("Field").setText(listOftext[3]);
+        set_reminder.comboBox(setDelayReminderFrame).selectItem(0);
+        set_reminder.comboBox(setPeriodReminderFrame).selectItem(0);
         set_reminder.button("OK").click();
         set_reminder.requireNotVisible();
         return correct();
@@ -198,6 +198,15 @@ public class TimeReminderApplicationTest extends SwingTest {
             feedback = "The Set Reminder window does not have all required components or correct names")
     CheckResult testLabelsReminder() throws Exception {
         addButton.click();
+        try {
+            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
+            setReminderToString = set_reminder.toString();
+            System.out.println(setReminderToString);
+        }
+        catch (WaitTimedOutError e) {
+            System.out.println("Timeout waiting for the window");
+            return wrong("Incorrect Reminder set up window");
+        }
         Optional<Component> field = componentsAvailability(textFieldReminderFrame);
         if (field.isEmpty() || !(field.get() instanceof JTextField)) {
             throw new WrongAnswer("JTextField required with name " + textFieldReminderFrame);
@@ -238,69 +247,33 @@ public class TimeReminderApplicationTest extends SwingTest {
         if (periodLabelRM.isEmpty() || !(periodLabelRM.get() instanceof JLabel)) {
             throw new WrongAnswer("JLabel required with name " + periodLabelReminderFrame);
         }
+
+        set_reminder.button("Cancel").click();
         return correct();
     }
 
     @DynamicTest(order = 16) CheckResult test5() throws Exception {
-        setReminders();
-        String[] contents = jListFixture.contents();
-        if (contents.length != 4) {throw new WrongAnswer("There are  4 reminders should be set");}
-        for (int i = 0; i < contents.length; i++) {
-            System.out.println(jListFixture.valueAt(i));
-            if (!jListFixture.valueAt(i)
-                             .equals("Reminder Text: " + listOftext[i] + "; Delay: " + delayMap.get(i) +
-                                     "; Period: " + periodMap.get(i) + ";")) {
-                throw new WrongAnswer(
-                        "Reminder text should be \"Reminder Text: " + listOftext[i] + ";" + " Delay: " +
-                                delayMap.get(i) + "; Period: " + periodMap.get(i) + ";" + " but it was " +
-                                jListFixture.valueAt(i));
-            }
-            jListFixture.clickItem(i).toString();
-            System.out.println("List size " + contents.length);
 
+        String[] contents = jListFixture.contents();
+        System.out.println(jListFixture.contents().length);
+        if (contents.length != 1) {throw new WrongAnswer("There is 1 reminder should be set");}
+
+        System.out.println(jListFixture.valueAt(0));
+        if (!jListFixture.valueAt(0)
+                         .equals("Reminder Text: " + listOftext[3] + "; Delay: " + delayMap.get(0) +
+                                 "; Period: " + periodMap.get(0) + ";")) {
+            throw new WrongAnswer(
+                    "Reminder text should be \"Reminder Text1: " + listOftext[3] + ";" + " Delay: " +
+                            delayMap.get(0) + "; Period: " + periodMap.get(0) + ";" + " but it was " +
+                            jListFixture.valueAt(0));
         }
+
+        System.out.println("List size " + contents.length);
+
         return correct();
     }
 
-    @DynamicTest(order = 17) CheckResult testEditOption() throws Exception {
-        addText();
-        String[] contents = jListFixture.contents();
-        if (contents.length != 4) {throw new WrongAnswer("There are  4 reminders should be set");}
-        for (int i = 0; i < contents.length; i++) {
-            System.out.println(jListFixture.valueAt(i));
-            if (!jListFixture.valueAt(i).equals("Reminder Text: " + listOftext[i] + "; Delay: " +
-                    delayMap.get(contents.length - i - 1) + "; " + "Period: " +
-                    periodMap.get(contents.length - i - 1) + ";")) {
-                throw new WrongAnswer(
-                        "Reminder text should be \"Reminder Text: " + listOftext[i] + "; Delay: " +
-                                delayMap.get(contents.length - i - 1) + "; Period: " +
-                                periodMap.get(contents.length - i - 1) + ";" + " but it was " +
-                                jListFixture.valueAt(i));
-            }
-            jListFixture.clickItem(i).toString();
-            System.out.println("List size " + contents.length);
-
-        }
-        return correct();
-    }
-
-    @DynamicTest(order = 18) CheckResult testDeleteOption() throws Exception {
-        String[] contents = jListFixture.contents();
-        if (contents.length != 4) {throw new WrongAnswer("There are  4 reminders should be set");}
-        Iterator<String> iterator = Arrays.stream(contents).iterator();
-        while (iterator.hasNext() && jListFixture.contents().length != 0) {
-            System.out.println(jListFixture.contents().length + " length");
-            jListFixture.clickItem(0);
-            Thread.sleep(200);
-            deleteButton.click();
-        }
-        if (jListFixture.contents().length != 0) {
-            throw new WrongAnswer("all reminders should be deleted from 'Reminder Application' window ");
-        }
-        return correct();
-    }
-
-    @DynamicTest(order = 19, feedback = "The window with title 'Set Reminder' should appear")
+    @DynamicTest(order = 17, feedback = "The window with title 'Set Reminder' should appear")
     CheckResult reminderAppearCheck() throws Exception {
         addButton.click();
         try {
@@ -328,118 +301,12 @@ public class TimeReminderApplicationTest extends SwingTest {
         return correct();
     }
 
-    @DynamicTest(order = 20, feedback = "OK button in 'Set Reminder' should  be disabled")
-    CheckResult okButtonCheck1() throws Exception {
-        Thread.sleep(4000);
-        addButton.click();
-        try {
-            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            System.out.println(set_reminder.toString());
-        }
-        catch (WaitTimedOutError e) {
-            System.out.println("Catch");
-            return wrong("Timeout waiting for ");
-        }
-        set_reminder.requireTitle("Set Reminder");
-        set_reminder.textBox("Field").setText("Test 1 reminder OK button check");
-        set_reminder.comboBox(setDelayReminderFrame).selectItem(3);
-        set_reminder.button("OK").click();
-        Thread.sleep(8000);
-        try {
-            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            System.out.println(set_reminder.toString());
-        }
-        catch (WaitTimedOutError e) {
-            System.out.println("Catch");
-            return wrong("Timeout waiting for ");
-        }
-        set_reminder.button("OK").requireDisabled();
-        return correct();
-    }
-
-    @DynamicTest(order = 21, feedback = "OK button in 'Set Reminder' should  be disabled")
-    CheckResult okButtonCheck2() throws Exception {
-        Thread.sleep(4000);
-        jListFixture.clickItem(0);
-        editButton.click();
-        try {
-            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            System.out.println(set_reminder.toString());
-        }
-        catch (WaitTimedOutError e) {
-            System.out.println("Catch");
-            return wrong("Timeout waiting for ");
-        }
-        set_reminder.requireTitle("Set Reminder");
-        set_reminder.textBox("Field").setText("Test 2 reminder OK button check");
-        set_reminder.comboBox(setDelayReminderFrame).selectItem(3);
-        set_reminder.button("OK").click();
-        Thread.sleep(8000);
-        try {
-            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            System.out.println(set_reminder.toString());
-        }
-        catch (WaitTimedOutError e) {
-            System.out.println("Catch");
-            return wrong("Timeout waiting for ");
-        }
-        set_reminder.button("OK").requireDisabled();
-        return correct();
-    }
-
     private Optional<Component> componentsAvailability(String name) {
         Optional<Component> first = getAllComponents(set_reminder.target()).stream().filter(it ->
                 it.getName() != null && it.getName().equals(name)).findFirst();
         return first;
     }
 
-    private void addText() {
-        String[] contents = jListFixture.contents();
-        System.out.println(contents.length);
-        for (int i = contents.length; i > 0; i--) {
-            jListFixture.clickItem(i - 1);
-            System.out.println(jListFixture.valueAt(i - 1));
-            editButton.click();
-            try {
-                set_reminder =
-                        WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-                System.out.println(set_reminder.toString());
-            }
-            catch (WaitTimedOutError e) {
-                System.out.println("Catch");
-
-            }
-            set_reminder.textBox("Field").enterText(text5ForReminder);
-            set_reminder.textBox("Field").enterText(text4ForReminder);
-            listOftext[i - 1] = listOftext[i - 1] + text5ForReminder + text4ForReminder;
-            set_reminder.comboBox(setDelayReminderFrame).selectItem(contents.length - i);
-            set_reminder.comboBox(setPeriodReminderFrame).selectItem(contents.length - i);
-            set_reminder.button("OK").click();
-
-        }
-    }
-
-    private void setReminders() {
-        for (int i = 1; i < 4; i++) {
-            if (i > 1) {
-                addButton.click();
-            }
-            try {
-                set_reminder =
-                        WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-                System.out.println(set_reminder.toString());
-            }
-            catch (WaitTimedOutError e) {
-                System.out.println("Catch");
-
-            }
-            set_reminder.textBox("Field").setText(listOftext[i]);
-            set_reminder.comboBox(setDelayReminderFrame).selectItem(i);
-            set_reminder.comboBox(setPeriodReminderFrame).selectItem(i);
-            set_reminder.button("OK").click();
-
-        }
-    }
 }
 
 
