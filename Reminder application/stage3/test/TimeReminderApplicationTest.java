@@ -64,11 +64,9 @@ public class TimeReminderApplicationTest extends SwingTest {
     }
 
     @DynamicTest(order = 3) CheckResult Jlistsize() throws Exception {
-
         if (jListFixture.contents().length != 0) {
             throw new WrongAnswer("Jlist size should be 0");
         }
-
         frame.getSize();
         return correct();
     }
@@ -81,37 +79,27 @@ public class TimeReminderApplicationTest extends SwingTest {
 
     @DynamicTest(order = 5, feedback = "Size of Frame Should be - (500 x 300)")
     CheckResult itShouldTestForCorrectFrameDimension() {
-
         Dimension size = frame.getSize();
-
         assertThat(size.getWidth()).isEqualTo(500);
         assertThat(size.getHeight()).isEqualTo(300);
-
         return correct();
     }
 
     @DynamicTest(order = 6, feedback = "Size of \"Scroll Pane\" Should be - (480 x 100)")
     CheckResult itShouldTestForCorrectJScrollDimension() {
-
         Dimension size = scrollPaneFixture.target().getSize();
-
         System.out.println("Size = " + size.getWidth() + "x" + size.getHeight());
-
         assertThat(size.getWidth()).isEqualTo(480);
         assertThat(size.getHeight()).isEqualTo(100);
-
         return correct();
     }
 
     @DynamicTest(order = 7, feedback = "Location  of button \"ADD\" Should be - x= 50  and y = 220)")
     CheckResult addButtonLocation() {
-
         Point location = addButton.target().getLocation();
-
         System.out.println("x= " + location.getX() + "; y= " + location.getY());
         assertThat(location.getX()).isEqualTo(50);
         assertThat(location.getY()).isEqualTo(220);
-
         return correct();
     }
 
@@ -167,7 +155,6 @@ public class TimeReminderApplicationTest extends SwingTest {
             System.out.println("Timeout waiting for the window");
             return wrong("Incorrect Reminder set up window");
         }
-
         set_reminder.button("Cancel").click();
         set_reminder.requireNotVisible();
         return correct();
@@ -247,17 +234,14 @@ public class TimeReminderApplicationTest extends SwingTest {
         if (periodLabelRM.isEmpty() || !(periodLabelRM.get() instanceof JLabel)) {
             throw new WrongAnswer("JLabel required with name " + periodLabelReminderFrame);
         }
-
         set_reminder.button("Cancel").click();
         return correct();
     }
 
     @DynamicTest(order = 16) CheckResult test5() throws Exception {
-
         String[] contents = jListFixture.contents();
         System.out.println(jListFixture.contents().length);
         if (contents.length != 1) {throw new WrongAnswer("There is 1 reminder should be set");}
-
         System.out.println(jListFixture.valueAt(0));
         if (!jListFixture.valueAt(0)
                          .equals("Reminder Text: " + listOftext[3] + "; Delay: " + delayMap.get(0) +
@@ -267,9 +251,7 @@ public class TimeReminderApplicationTest extends SwingTest {
                             delayMap.get(0) + "; Period: " + periodMap.get(0) + ";" + " but it was " +
                             jListFixture.valueAt(0));
         }
-
         System.out.println("List size " + contents.length);
-
         return correct();
     }
 
@@ -297,7 +279,6 @@ public class TimeReminderApplicationTest extends SwingTest {
             System.out.println("Catch");
             return wrong("Timeout waiting for ");
         }
-
         return correct();
     }
 

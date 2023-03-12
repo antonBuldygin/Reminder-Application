@@ -31,7 +31,6 @@ public class Controller implements ActionListener {
                 reminderFrame.editButton.setEnabled(true);
                 reminderFrame.task = new TimerTask() {
                     public void run() {
-
                         Music music = new Music();
                         if (new File(
                                 "Reminder application/stage4/src/reminderapplication/music.wav").exists()) {
@@ -41,12 +40,10 @@ public class Controller implements ActionListener {
                             music.setFile(path);
                         }
                         else {
-                            String path = new File(
-                                    "src/reminderapplication/music.wav").getAbsolutePath();
+                            String path = new File("src/reminderapplication/music.wav").getAbsolutePath();
                             System.out.println(path);
                             music.setFile(path);
                         }
-
                         music.play();
                         reminderFrame.setVisible(true);
                         reminderFrame.okButton.setEnabled(false);
@@ -102,8 +99,7 @@ public class Controller implements ActionListener {
                             music.setFile(path);
                         }
                         else {
-                            String path = new File(
-                                    "src/reminderapplication/music.wav").getAbsolutePath();
+                            String path = new File("src/reminderapplication/music.wav").getAbsolutePath();
                             System.out.println(path);
                             music.setFile(path);
                         }
@@ -142,7 +138,6 @@ public class Controller implements ActionListener {
                 reminderFrame.tm.scrollPane.repaint();
             }
         }
-
         if (actionEvent.getSource() == reminderFrame.cancelButton) {
             System.out.println("Cancel " + reminderFrame.text);
             reminderFrame.textField.setText(reminderFrame.text);
@@ -152,7 +147,6 @@ public class Controller implements ActionListener {
             reminderFrame.editButton.setEnabled(true);
             reminderFrame.dispose();
         }
-
         if (actionEvent.getSource() == reminderFrame.tm.deleteButton) {
             if (reminderFrame.tm.selectedValue != null) {
                 reminderFrame.tm.selectedValue.setVisible(false);

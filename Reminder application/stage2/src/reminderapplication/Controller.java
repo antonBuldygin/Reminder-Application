@@ -13,13 +13,11 @@ public class Controller implements ActionListener {
 
     @Override public void actionPerformed(ActionEvent actionEvent) {
         if (actionEvent.getSource() == reminderFrame.okButton) {
-
             reminderFrame.addButton.setEnabled(true);
             reminderFrame.deleteButton.setEnabled(true);
             reminderFrame.editButton.setEnabled(true);
             reminderFrame.dispose();
         }
-
         if (actionEvent.getSource() == reminderFrame.cancelButton) {
             System.out.println("Cancel " + reminderFrame.text);
             reminderFrame.textField.setText(reminderFrame.text);

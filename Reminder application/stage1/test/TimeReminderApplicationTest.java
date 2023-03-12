@@ -38,11 +38,9 @@ public class TimeReminderApplicationTest extends SwingTest {
     }
 
     @DynamicTest(order = 3) CheckResult Jlistsize() throws Exception {
-
         if (jListFixture.contents().length != 0) {
             throw new WrongAnswer("Jlist size should be 0");
         }
-
         return correct();
     }
 
@@ -54,47 +52,33 @@ public class TimeReminderApplicationTest extends SwingTest {
 
     @DynamicTest(order = 5, feedback = "Size of Frame Should be - (500 x 300)")
     CheckResult itShouldTestForCorrectFrameDimension() {
-
         Dimension size = frame.getSize();
-
         assertThat(size.getWidth()).isEqualTo(500);
         assertThat(size.getHeight()).isEqualTo(300);
-
         return correct();
     }
 
     @DynamicTest(order = 6, feedback = "The frame should not be resizable")
     CheckResult testFrameIsNotResizable() {
-
-      ;
-
         assertThat(frame.isResizable()).isEqualTo(false);
-
         return correct();
     }
 
     @DynamicTest(order = 7, feedback = "Size of \"Scroll Pane\" Should be - (480 x 100)")
     CheckResult itShouldTestForCorrectJScrollDimension() {
-
         Dimension size = scrollPaneFixture.target().getSize();
-
         System.out.println("Size = " + size.getWidth() + "x" + size.getHeight());
-
         assertThat(size.getWidth()).isEqualTo(480);
         assertThat(size.getHeight()).isEqualTo(100);
-
         return correct();
     }
 
     @DynamicTest(order = 8, feedback = "Location  of button \"ADD\" Should be - x= 50  and y = 220)")
     CheckResult addButtonLocation() {
-
         Point location = addButton.target().getLocation();
-
         System.out.println("x= " + location.getX() + "; y= " + location.getY());
         assertThat(location.getX()).isEqualTo(50);
         assertThat(location.getY()).isEqualTo(220);
-
         return correct();
     }
 

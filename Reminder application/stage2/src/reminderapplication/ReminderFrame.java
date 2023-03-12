@@ -35,28 +35,20 @@ public class ReminderFrame extends JFrame {
         setVisible(true);
         setResizable(false);
         setLocationRelativeTo(null);
-
         this.addButton = tm.addButton;
         this.tm = tm;
-
         this.editButton = tm.editButton;
         this.deleteButton = tm.deleteButton;
-
         textField = new JTextField();
         textField.setName("Field");
-
         textField.setFont(new Font("Dialog", Font.PLAIN, 14));
         textField.setBounds(10, 40, 250, 30);
         textField.setVisible(true);
-
         add(textField);
-
         JComboBox periodComboBox = new JComboBox(repeatPeriod);
         periodComboBox.setName("set Period");
-
         JComboBox delaysComboBox = new JComboBox(delays);
         delaysComboBox.setName("set Delay");
-
         reminderText = new JLabel("Reminder Text");
         reminderText.setName("Reminder Text Label");
         delayslabel = new JLabel();
@@ -64,19 +56,15 @@ public class ReminderFrame extends JFrame {
         setDelay = new JLabel("Set Delay");
         setDelay.setName("Set Delay Label");
         delayslabel.setText(String.valueOf(delays[delaysComboBox.getSelectedIndex()]));
-
         delaysComboBox.addActionListener(actionEvent -> delayslabel.setText(
                 String.valueOf(delays[delaysComboBox.getSelectedIndex()])));
-
         periodlabel = new JLabel();
         periodlabel.setName("Period label");
         JLabel setRepeat = new JLabel("Set Period");
         setRepeat.setName("Set Repeat Period Label");
         periodlabel.setText(String.valueOf(repeatPeriod[periodComboBox.getSelectedIndex()]));
-
         periodComboBox.addActionListener(actionEvent -> periodlabel.setText(
                 String.valueOf(repeatPeriod[periodComboBox.getSelectedIndex()])));
-
         reminderText.setBounds(10, 5, 250, 30);
         periodlabel.setBounds(350, 70, 50, 30);
         periodComboBox.setBounds(350, 40, 50, 30);
@@ -84,7 +72,6 @@ public class ReminderFrame extends JFrame {
         setDelay.setBounds(270, 5, 100, 30);
         delayslabel.setBounds(270, 70, 50, 30);
         delaysComboBox.setBounds(270, 40, 50, 30);
-
         add(periodlabel);
         add(periodComboBox);
         add(delaysComboBox);
@@ -92,9 +79,7 @@ public class ReminderFrame extends JFrame {
         add(setDelay);
         add(delayslabel);
         add(reminderText);
-
         setLayout(null);
-
         addWindowListener(new WindowAdapter() {
             @Override public void windowClosing(WindowEvent e) {
                 System.out.println("Closed");
@@ -106,21 +91,17 @@ public class ReminderFrame extends JFrame {
 
             }
         });
-
         okButton = new JButton("OK");
         okButton.setName("OK");
         okButton.setBounds(20, 110, 100, 30);
         okButton.setVisible(true);
         add(okButton);
-
         cancelButton = new JButton("Cancel");
         cancelButton.setName("Cancel");
         cancelButton.setBounds(150, 110, 100, 30);
         cancelButton.setVisible(true);
         add(cancelButton);
-
         controller = new Controller(this);
-
         okButton.addActionListener(controller);
         cancelButton.addActionListener(controller);
         tm.deleteButton.addActionListener(controller);
