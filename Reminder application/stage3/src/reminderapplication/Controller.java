@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -20,29 +19,22 @@ public class Controller implements ActionListener {
         if (actionEvent.getSource() == reminderFrame.okButton) {
             if (!reminderFrame.toEdit) {
                 reminderFrame.text = reminderFrame.textField.getText();
-                System.out.println("ADD option " + reminderFrame.text);
                 reminderFrame.tm.model.addElement(reminderFrame);
-                if (!reminderFrame.tm.model.isEmpty()) {
-                    System.out.println("NUMBER " + reminderFrame.tm.model.lastElement());
-                }
                 reminderFrame.flag = false;
                 reminderFrame.addButton.setEnabled(true);
                 reminderFrame.deleteButton.setEnabled(true);
                 reminderFrame.editButton.setEnabled(true);
                 reminderFrame.task = new TimerTask() {
                     public void run() {
-
                         Music music = new Music();
                         if (new File(
                                 "Reminder application/stage3/src/reminderapplication/music.wav").exists()) {
                             String path = new File(
                                     "Reminder application/stage3/src/reminderapplication/music.wav").getAbsolutePath();
-                            System.out.println(path);
                             music.setFile(path);
                         }
                         else {
                             String path = new File("src/reminderapplication/music.wav").getAbsolutePath();
-                            System.out.println(path);
                             music.setFile(path);
                         }
                         music.play();
@@ -61,10 +53,6 @@ public class Controller implements ActionListener {
                             throw new RuntimeException(ex);
                         }
                         reminderFrame.setVisible(false);
-                        //                            toolkit.beep();
-                        System.out.println("Beep!");
-                        System.out.println("Task performed on: " + new Date() + "n" + "Thread's name: " +
-                                Thread.currentThread().getName());
                         reminderFrame.okButton.setEnabled(false);
                     }
                 };
@@ -83,7 +71,6 @@ public class Controller implements ActionListener {
             if (reminderFrame.toEdit) {
                 reminderFrame.flag = false;
                 reminderFrame.text = reminderFrame.textField.getText();
-                System.out.println("OK Edit " + reminderFrame.text);
                 reminderFrame.addButton.setEnabled(true);
                 reminderFrame.deleteButton.setEnabled(true);
                 reminderFrame.editButton.setEnabled(true);
@@ -96,19 +83,13 @@ public class Controller implements ActionListener {
                                 "Reminder application/stage3/src/reminderapplication/music.wav").exists()) {
                             String path = new File(
                                     "Reminder application/stage3/src/reminderapplication/music.wav").getAbsolutePath();
-                            System.out.println(path);
                             music.setFile(path);
                         }
                         else {
                             String path = new File("src/reminderapplication/music.wav").getAbsolutePath();
-                            System.out.println(path);
                             music.setFile(path);
                         }
                         music.play();
-                        //                            toolkit.beep();
-                        System.out.println("Beep!");
-                        System.out.println("Task performed on: " + new Date() + "n" + "Thread's name: " +
-                                Thread.currentThread().getName());
                         reminderFrame.setVisible(true);
                         reminderFrame.okButton.setEnabled(false);
                         try {
@@ -139,9 +120,7 @@ public class Controller implements ActionListener {
                 reminderFrame.tm.scrollPane.repaint();
             }
         }
-
         if (actionEvent.getSource() == reminderFrame.cancelButton) {
-            System.out.println("Cancel " + reminderFrame.text);
             reminderFrame.textField.setText(reminderFrame.text);
             reminderFrame.flag = false;
             reminderFrame.addButton.setEnabled(true);
@@ -149,7 +128,6 @@ public class Controller implements ActionListener {
             reminderFrame.editButton.setEnabled(true);
             reminderFrame.dispose();
         }
-
         if (actionEvent.getSource() == reminderFrame.tm.deleteButton) {
             if (reminderFrame.tm.selectedValue != null) {
                 reminderFrame.tm.selectedValue.setVisible(false);
