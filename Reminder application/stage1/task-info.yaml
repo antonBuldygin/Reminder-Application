@@ -1,8 +1,0 @@
-type: edu
-files:
-- name: src/reminderapplication/Main.java
-  visible: true
-- name: test/TimeReminderApplicationTest.java
-  visible: false
-- name: src/reminderapplication/TimeReminderApplication.java
-  visible: true
