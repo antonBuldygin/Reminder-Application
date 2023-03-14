@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TimeReminderApplicationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-14T08:50:36" hostname="ANTONHONOR" time="60.44">
+  <properties/>
+  <testcase name="start" classname="TimeReminderApplicationTest" time="60.44"/>
+  <system-out><![CDATA[?[1;31m
+Start test 1?[0m
+?[0;34m11:50:37.828 [Test worker] INFO TimeReminderApplicationTest - The window name frame0
+?[0m?[1;31m
+Start test 2?[0m
+?[1;31m
+Start test 3?[0m
+?[1;31m
+Start test 4?[0m
+?[1;31m
+Start test 5?[0m
+?[1;31m
+Start test 6?[0m
+?[0;34mSize = 480.0x100.0
+?[0m?[1;31m
+Start test 7?[0m
+?[0;34mx= 50.0; y= 220.0
+?[0m?[1;31m
+Start test 8?[0m
+?[0;34m11:50:38.220 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - ADD Button selected, list size 0
+?[0;34m11:50:38.287 [Test worker] INFO TimeReminderApplicationTest - Created Reminder org.assertj.swing.fixture.FrameFixture@785c819d
+?[0m?[1;31m
+Start test 9?[0m
+?[1;31m
+Start test 10?[0m
+?[1;31m
+Start test 11?[0m
+?[1;31m
+Start test 12?[0m
+?[0m?[0;34mClosed
+?[1;31m
+Start test 13?[0m
+?[0m?[0;34m11:50:38.697 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - ADD Button selected, list size 0
+?[0;34morg.assertj.swing.fixture.FrameFixture@70e00d2f
+?[0m?[0;34mCancel null
+?[0m?[1;31m
+Start test 14?[0m
+?[0m?[0;34m11:50:39.246 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - ADD Button selected, list size 0
+?[0;34morg.assertj.swing.fixture.FrameFixture@16334f3c
+?[0m?[0;34mADD no Edit 
+?[0m?[0;34mNUMBER Reminder Text: ; Delay: 30; Period: 0;
+?[0m?[1;31m
+Start test 15?[0m
+?[0m?[0;34m11:50:39.798 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - ADD Button selected, list size 1
+?[1;31m
+Start test 16?[0m
+?[0;34morg.assertj.swing.fixture.FrameFixture@2d03dabf
+?[0m?[0;34mADD no Edit Wake up
+?[0m?[0;34mNUMBER Reminder Text: Wake up; Delay: 25; Period: 5;
+?[0m?[0;34m11:50:41.328 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - ADD Button selected, list size 2
+?[0m?[0;34morg.assertj.swing.fixture.FrameFixture@7333bcc7
+?[0m?[0;34mADD no Edit Gym
+?[0m?[0;34mNUMBER Reminder Text: Gym; Delay: 15; Period: 10;
+?[0m?[0;34m11:50:42.808 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - ADD Button selected, list size 3
+?[0m?[0;34morg.assertj.swing.fixture.FrameFixture@497bef3b
+?[0m?[0;34mADD no Edit Do not forget Java lessons
+?[0m?[0;34mNUMBER Reminder Text: Do not forget Java lessons; Delay: 5; Period: 20;
+?[0m?[0;34m11:50:44.127 [Test worker] INFO TimeReminderApplicationTest - Selected Reminder from Jlist Reminder Text: ; Delay: 30; Period: 0;
+?[0m?[0;34m11:50:44.253 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: ; Delay: 30; Period: 0;
+?[0m?[0;34m11:50:44.329 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: ; Delay: 30; Period: 0;
+?[0m?[0;34m11:50:44.454 [Test worker] INFO TimeReminderApplicationTest - List size 4
+?[0m?[0;34m11:50:44.454 [Test worker] INFO TimeReminderApplicationTest - Selected Reminder from Jlist Reminder Text: Wake up; Delay: 25; Period: 5;
+?[0m?[0;34m11:50:44.579 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Wake up; Delay: 25; Period: 5;
+?[0m?[0;34m11:50:44.642 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Wake up; Delay: 25; Period: 5;
+?[0m?[0;34m11:50:44.766 [Test worker] INFO TimeReminderApplicationTest - List size 4
+?[0m?[0;34m11:50:44.766 [Test worker] INFO TimeReminderApplicationTest - Selected Reminder from Jlist Reminder Text: Gym; Delay: 15; Period: 10;
+?[0m?[0;34m11:50:44.893 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Gym; Delay: 15; Period: 10;
+?[0m?[0;34m11:50:44.954 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Gym; Delay: 15; Period: 10;
+?[0m?[0;34m11:50:45.079 [Test worker] INFO TimeReminderApplicationTest - List size 4
+?[0m?[0;34m11:50:45.080 [Test worker] INFO TimeReminderApplicationTest - Selected Reminder from Jlist Reminder Text: Do not forget Java lessons; Delay: 5; Period: 20;
+?[0m?[0;34m11:50:45.206 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Do not forget Java lessons; Delay: 5; Period: 20;
+?[0m?[0;34m11:50:45.267 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Do not forget Java lessons; Delay: 5; Period: 20;
+?[0m?[0;34m11:50:45.390 [Test worker] INFO TimeReminderApplicationTest - List size 4
+?[0m?[1;31m
+Start test 17?[0m
+?[0;34m4
+?[0m?[0;34mReminder Text: Do not forget Java lessons; Delay: 5; Period: 20;
+?[0m?[0;34m11:50:45.870 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - EDIT button selected Reminder Text: Do not forget Java lessons; Delay: 5; Period: 20; 
+?[0m?[0;34morg.assertj.swing.fixture.FrameFixture@497bef3b
+?[0m?[0;34mOK Edit Do not forget Java lessons and Swim
+?[0m?[0;34m11:50:48.801 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Gym; Delay: 15; Period: 10;
+?[0m?[0;34m11:50:48.861 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Gym; Delay: 15; Period: 10;
+?[0m?[0;34mReminder Text: Gym; Delay: 15; Period: 10;
+?[0m?[0;34m11:50:49.111 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - EDIT button selected Reminder Text: Gym; Delay: 15; Period: 10; 
+?[0m?[0;34morg.assertj.swing.fixture.FrameFixture@7333bcc7
+?[0m?[0;34mOK Edit Gym and Swim
+?[0m?[0;34m11:50:51.878 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Wake up; Delay: 25; Period: 5;
+?[0m?[0;34m11:50:51.939 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Wake up; Delay: 25; Period: 5;
+?[0m?[0;34mReminder Text: Wake up; Delay: 25; Period: 5;
+?[0m?[0;34m11:50:52.204 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - EDIT button selected Reminder Text: Wake up; Delay: 25; Period: 5; 
+?[0m?[0;34morg.assertj.swing.fixture.FrameFixture@2d03dabf
+?[0m?[0;34mOK Edit Wake up and Swim
+?[0m?[0;34m11:50:55.113 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: ; Delay: 30; Period: 0;
+?[0m?[0;34m11:50:55.186 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: ; Delay: 30; Period: 0;
+?[0m?[0;34mReminder Text: ; Delay: 30; Period: 0;
+?[0m?[0;34m11:50:55.444 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - EDIT button selected Reminder Text: ; Delay: 30; Period: 0; 
+?[0m?[0;34morg.assertj.swing.fixture.FrameFixture@16334f3c
+?[0m?[0;34mOK Edit  and Swim
+?[0m?[0;34mReminder Text:  and Swim; Delay: 5; Period: 20;
+?[0m?[0;34m11:50:58.334 [Test worker] INFO TimeReminderApplicationTest - List size 4
+?[0m?[0;34mReminder Text: Wake up and Swim; Delay: 15; Period: 10;
+?[0m?[0;34m11:50:58.448 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Wake up and Swim; Delay: 15; Period: 10;
+?[0m?[0;34m11:50:58.509 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Wake up and Swim; Delay: 15; Period: 10;
+?[0m?[0;34m11:50:58.621 [Test worker] INFO TimeReminderApplicationTest - List size 4
+?[0m?[0;34mReminder Text: Gym and Swim; Delay: 25; Period: 5;
+?[0m?[0;34m11:50:58.738 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Gym and Swim; Delay: 25; Period: 5;
+?[0m?[0;34m11:50:58.799 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Gym and Swim; Delay: 25; Period: 5;
+?[0m?[0;34m11:50:58.912 [Test worker] INFO TimeReminderApplicationTest - List size 4
+?[0m?[0;34mReminder Text: Do not forget Java lessons and Swim; Delay: 30; Period: 0;
+?[0m?[0;34m11:50:59.028 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Do not forget Java lessons and Swim; Delay: 30; Period: 0;
+?[0m?[0;34m11:50:59.089 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Do not forget Java lessons and Swim; Delay: 30; Period: 0;
+?[0m?[0;34m11:50:59.201 [Test worker] INFO TimeReminderApplicationTest - List size 4
+?[0m?[1;31m
+Start test 18?[0m
+?[0;34m11:50:59.205 [Test worker] INFO TimeReminderApplicationTest - List size 4
+?[0m?[0;34m11:50:59.322 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text:  and Swim; Delay: 5; Period: 20;
+?[0m?[0;34m11:50:59.383 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text:  and Swim; Delay: 5; Period: 20;
+?[0m?[0;34m11:50:59.822 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list null
+?[0m?[0;34m3
+?[0m?[0;34m11:50:59.934 [Test worker] INFO TimeReminderApplicationTest - List size 3
+?[0m?[0;34m11:51:00.049 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Wake up and Swim; Delay: 15; Period: 10;
+?[0m?[0;34m11:51:00.114 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Wake up and Swim; Delay: 15; Period: 10;
+?[0m?[0;34m11:51:00.551 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list null
+?[0m?[0;34m2
+?[0m?[0;34m11:51:00.663 [Test worker] INFO TimeReminderApplicationTest - List size 2
+?[0m?[0;34m11:51:00.780 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Gym and Swim; Delay: 25; Period: 5;
+?[0m?[0;34m11:51:00.841 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Gym and Swim; Delay: 25; Period: 5;
+?[0m?[0;34m11:51:01.280 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list null
+?[0m?[0;34m1
+?[0m?[0;34m11:51:01.392 [Test worker] INFO TimeReminderApplicationTest - List size 1
+?[0m?[0;34m11:51:01.508 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Do not forget Java lessons and Swim; Delay: 30; Period: 0;
+?[0m?[0;34m11:51:01.569 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Do not forget Java lessons and Swim; Delay: 30; Period: 0;
+?[0m?[0;34m11:51:02.005 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list null
+?[0m?[0;34m0
+?[0m?[1;31m
+Start test 19?[0m
+?[0m?[0;34m11:51:02.266 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - ADD Button selected, list size 0
+?[0;34morg.assertj.swing.fixture.FrameFixture@3e88ded1
+?[0m?[0;34mADD no Edit Test reminder starts after set delay
+?[0m?[0;34m11:51:03.026 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list null
+?[0m?[0;34mNUMBER Reminder Text: Test reminder starts after set delay; Delay: 5; Period: 0;
+?[0;34mC:\Users\anton\Downloads\Reminder Application\Reminder application\stage4\src\reminderapplication\music.wav
+?[0m?[0;34mmoe C:\Users\anton\Downloads\Reminder Application\Reminder application\stage4\src\reminderapplication\music.wav
+?[0m?[0;34mabsC:\Users\anton\Downloads\Reminder Application\Reminder application\stage4\src\reminderapplication\music.wav
+?[0m?[0;34mМузыка com.sun.media.sound.DirectAudioDevice$DirectClip@78fc5c1e
+?[0m?[0;34morg.assertj.swing.fixture.FrameFixture@3e88ded1
+?[0m?[1;31m
+Start test 20?[0m
+?[0m?[0;34mBeep!
+?[0m?[0;34mTask performed on: Tue Mar 14 11:51:13 MSK 2023nThread's name: Timer-8
+?[0m?[0;34m11:51:15.318 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - ADD Button selected, list size 1
+?[0;34morg.assertj.swing.fixture.FrameFixture@445e82f1
+?[0m?[0;34mADD no Edit Test 1 reminder OK button check
+?[0m?[0;34m11:51:16.001 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list null
+?[0m?[0;34mNUMBER Reminder Text: Test 1 reminder OK button check; Delay: 5; Period: 0;
+?[0;34mC:\Users\anton\Downloads\Reminder Application\Reminder application\stage4\src\reminderapplication\music.wav
+?[0m?[0;34mmoe C:\Users\anton\Downloads\Reminder Application\Reminder application\stage4\src\reminderapplication\music.wav
+?[0m?[0;34mabsC:\Users\anton\Downloads\Reminder Application\Reminder application\stage4\src\reminderapplication\music.wav
+?[0m?[0;34mМузыка com.sun.media.sound.DirectAudioDevice$DirectClip@17b210d0
+?[0m?[0;34morg.assertj.swing.fixture.FrameFixture@445e82f1
+?[0m?[1;31m
+Start test 21?[0m
+?[0m?[0;34mBeep!
+?[0m?[0;34mTask performed on: Tue Mar 14 11:51:26 MSK 2023nThread's name: Timer-9
+?[0m?[0;34m11:51:28.240 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Test reminder starts after set delay; Delay: 5; Period: 0;
+?[0m?[0;34m11:51:28.300 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - Selected reminder from the  list Reminder Text: Test reminder starts after set delay; Delay: 5; Period: 0;
+?[0m?[0;34m11:51:28.547 [AWT-EventQueue-0] INFO reminderapplication.TimeReminderApplication - EDIT button selected Reminder Text: Test reminder starts after set delay; Delay: 5; Period: 0; 
+?[0;34morg.assertj.swing.fixture.FrameFixture@3e88ded1
+?[0m?[0;34mOK Edit Test 2 reminder OK button check
+?[0;34mC:\Users\anton\Downloads\Reminder Application\Reminder application\stage4\src\reminderapplication\music.wav
+?[0m?[0;34mmoe C:\Users\anton\Downloads\Reminder Application\Reminder application\stage4\src\reminderapplication\music.wav
+?[0m?[0;34mabsC:\Users\anton\Downloads\Reminder Application\Reminder application\stage4\src\reminderapplication\music.wav
+?[0m?[0;34mМузыка com.sun.media.sound.DirectAudioDevice$DirectClip@6603eeae
+?[0m?[0;34mBeep!
+?[0m?[0;34mTask performed on: Tue Mar 14 11:51:34 MSK 2023nThread's name: Timer-10
+?[0m?[0;34morg.assertj.swing.fixture.FrameFixture@3e88ded1
+?[0m]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

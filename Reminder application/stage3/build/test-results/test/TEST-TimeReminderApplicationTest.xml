@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TimeReminderApplicationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-12T14:45:17" hostname="ANTONHONOR" time="12.593">
+  <properties/>
+  <testcase name="start" classname="TimeReminderApplicationTest" time="12.593"/>
+  <system-out><![CDATA[?[1;31m
+Start test 1?[0m
+?[1;31m
+Start test 2?[0m
+?[1;31m
+Start test 3?[0m
+?[1;31m
+Start test 4?[0m
+?[1;31m
+Start test 5?[0m
+?[1;31m
+Start test 6?[0m
+?[0;34mSize = 480.0x100.0
+?[0m?[1;31m
+Start test 7?[0m
+?[0;34mx= 50.0; y= 220.0
+?[0m?[1;31m
+Start test 8?[0m
+?[0;34mReminder Frames list 0
+?[0m?[0;34mReminder Frames list size 0
+?[0;34morg.assertj.swing.fixture.FrameFixture@7ec94ff4
+?[0m?[1;31m
+Start test 9?[0m
+?[1;31m
+Start test 10?[0m
+?[1;31m
+Start test 11?[0m
+?[1;31m
+Start test 12?[0m
+?[0m?[0;34mClosed
+?[1;31m
+Start test 13?[0m
+?[0m?[0;34mReminder Frames list 0
+?[0m?[0;34mReminder Frames list size 0
+?[0;34morg.assertj.swing.fixture.FrameFixture@5ce901e5
+?[0m?[0;34mCancel null
+?[0m?[1;31m
+Start test 14?[0m
+?[0m?[0;34mReminder Frames list 0
+?[0m?[0;34mReminder Frames list size 0
+?[0;34morg.assertj.swing.fixture.FrameFixture@41056b78
+?[0m?[0;34mADD option Do not forget Java lessons
+?[0m?[0;34mNUMBER Reminder Text: Do not forget Java lessons; Delay: 30; Period: 0;
+?[0m?[1;31m
+Start test 15?[0m
+?[0m?[0;34mReminder Frames list 1
+?[0m?[0;34mReminder Frames list size 1
+?[0;34morg.assertj.swing.fixture.FrameFixture@1e78799f
+?[0m?[0;34mCancel null
+?[0m?[1;31m
+Start test 16?[0m
+?[0;34m1
+?[0m?[0;34mReminder Text: Do not forget Java lessons; Delay: 30; Period: 0;
+?[0m?[0;34mList size 1
+?[0m?[1;31m
+Start test 17?[0m
+?[0m?[0;34mReminder Frames list 1
+?[0m?[0;34mReminder Frames list size 1
+?[0;34morg.assertj.swing.fixture.FrameFixture@582addb7
+?[0m?[0;34mADD option Test reminder starts after set delay
+?[0m?[0;34mNUMBER Reminder Text: Test reminder starts after set delay; Delay: 5; Period: 0;
+?[0;34mC:\Users\anton\Downloads\Reminder Application\Reminder application\stage3\src\reminderapplication\music.wav
+?[0m?[0;34morg.assertj.swing.fixture.FrameFixture@582addb7
+?[0m]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
