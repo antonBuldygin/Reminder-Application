@@ -18,7 +18,7 @@
 /Reminder-Application/.idea/modules/Reminder application/stage3/out/
 /Reminder-Application/.idea/modules/Reminder application/stage2/out/
 /Reminder-Application/.idea/modules/Reminder application/stage1/out/
-/Reminder-Application/Reminder application/stage1/out/
-/Reminder-Application/Reminder application/stage2/out/
-/Reminder-Application/Reminder application/stage3/out/
-/Reminder-Application/Reminder application/stage4/out/
+#/Reminder-Application/Reminder application/stage1/out/
+#/Reminder-Application/Reminder application/stage2/out/
+#/Reminder-Application/Reminder application/stage3/out/
+#/Reminder-Application/Reminder application/stage4/out/
