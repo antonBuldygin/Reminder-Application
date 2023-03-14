@@ -2,6 +2,7 @@ package reminderapplication;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Timer;
@@ -14,9 +15,6 @@ public class Controller implements ActionListener {
     public Controller(ReminderFrame reminderFrame) {
         this.reminderFrame = reminderFrame;
     }
-
-
-
 
     @Override public void actionPerformed(ActionEvent actionEvent) {
         if (actionEvent.getSource() == reminderFrame.okButton) {
@@ -33,12 +31,22 @@ public class Controller implements ActionListener {
                 reminderFrame.editButton.setEnabled(true);
                 reminderFrame.task = new TimerTask() {
                     public void run() {
-
                         Music music = new Music();
-                        music.setFile("D:\\Reminder Application\\Reminder " + "application\\stage1\\src" +
-                                "\\reminderapplication\\music.wav");
+                        if (new File(
+                                "Reminder application/stage4/src/reminderapplication/music.wav").exists()) {
+                            String path = new File(
+                                    "Reminder application/stage4/src/reminderapplication/music.wav").getAbsolutePath();
+                            System.out.println(path);
+                            music.setFile(path);
+                        }
+                        else {
+                            String path = new File("src/reminderapplication/music.wav").getAbsolutePath();
+                            System.out.println(path);
+                            music.setFile(path);
+                        }
                         music.play();
                         reminderFrame.setVisible(true);
+                        reminderFrame.okButton.setEnabled(false);
                         try {
                             Thread.sleep(5000);
                         }
@@ -83,8 +91,18 @@ public class Controller implements ActionListener {
                 reminderFrame.task = new TimerTask() {
                     public void run() {
                         Music music = new Music();
-                        music.setFile("D:\\Reminder Application\\Reminder " + "application\\stage1\\src" +
-                                "\\reminderapplication\\music.wav");
+                        if (new File(
+                                "Reminder application/stage4/src/reminderapplication/music.wav").exists()) {
+                            String path = new File(
+                                    "Reminder application/stage4/src/reminderapplication/music.wav").getAbsolutePath();
+                            System.out.println(path);
+                            music.setFile(path);
+                        }
+                        else {
+                            String path = new File("src/reminderapplication/music.wav").getAbsolutePath();
+                            System.out.println(path);
+                            music.setFile(path);
+                        }
                         music.play();
                         //                            toolkit.beep();
                         System.out.println("Beep!");
@@ -120,7 +138,6 @@ public class Controller implements ActionListener {
                 reminderFrame.tm.scrollPane.repaint();
             }
         }
-
         if (actionEvent.getSource() == reminderFrame.cancelButton) {
             System.out.println("Cancel " + reminderFrame.text);
             reminderFrame.textField.setText(reminderFrame.text);
@@ -130,7 +147,6 @@ public class Controller implements ActionListener {
             reminderFrame.editButton.setEnabled(true);
             reminderFrame.dispose();
         }
-
         if (actionEvent.getSource() == reminderFrame.tm.deleteButton) {
             if (reminderFrame.tm.selectedValue != null) {
                 reminderFrame.tm.selectedValue.setVisible(false);
@@ -141,7 +157,6 @@ public class Controller implements ActionListener {
             }
         }
 
-        }
-
+    }
 
 }

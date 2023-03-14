@@ -6,11 +6,7 @@ files:
   visible: true
 - name: src/reminderapplication/ReminderFrame.java
   visible: true
-- name: src/reminderapplication/CalendarProgram.java
-  visible: true
 - name: src/reminderapplication/Music.java
-  visible: true
-- name: src/reminderapplication/Stock.java
   visible: true
 - name: src/reminderapplication/Controller.java
   visible: true

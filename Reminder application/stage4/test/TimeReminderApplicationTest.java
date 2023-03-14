@@ -9,6 +9,8 @@ import org.hyperskill.hstest.exception.outcomes.WrongAnswer;
 import org.hyperskill.hstest.stage.SwingTest;
 import org.hyperskill.hstest.testcase.CheckResult;
 import org.hyperskill.hstest.testing.swing.SwingComponent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import reminderapplication.TimeReminderApplication;
 
 import javax.swing.*;
@@ -49,6 +51,8 @@ public class TimeReminderApplicationTest extends SwingTest {
     @SwingComponent(name = "DeleteReminder") private JButtonFixture deleteButton;
     @SwingComponent(name = "List of Reminders") private JListFixture jListFixture;
 
+    private static final Logger LOG = LoggerFactory.getLogger(TimeReminderApplicationTest.class);
+
     public TimeReminderApplicationTest() {
         super(new TimeReminderApplication());
     }
@@ -56,71 +60,53 @@ public class TimeReminderApplicationTest extends SwingTest {
     @DynamicTest(order = 1, feedback = "The window title should be 'Reminder Application'")
     CheckResult test1() {
         window.requireTitle("Reminder Application");
+        LOG.info("The window name {}", window.target().getName());
         return correct();
     }
 
     @DynamicTest(order = 2) CheckResult testButtons() {
         requireEnabled(addButton, deleteButton, editButton, jListFixture, scrollPaneFixture);
-        requireVisible(addButton, deleteButton,editButton, jListFixture, scrollPaneFixture );
+        requireVisible(addButton, deleteButton, editButton, jListFixture, scrollPaneFixture);
         return correct();
     }
 
     @DynamicTest(order = 3) CheckResult Jlistsize() throws Exception {
-
         if (jListFixture.contents().length != 0) {
             throw new WrongAnswer("Jlist size should be 0");
         }
-
         frame.getSize();
         return correct();
     }
 
     @DynamicTest(order = 4, feedback = "Default Close Operation should be Exit on Close")
     CheckResult itShouldTestForDefaultCloseOperation() {
-        assertThat(frame.getDefaultCloseOperation())
-                .isEqualTo(JFrame.EXIT_ON_CLOSE);
+        assertThat(frame.getDefaultCloseOperation()).isEqualTo(JFrame.EXIT_ON_CLOSE);
         return correct();
     }
 
     @DynamicTest(order = 5, feedback = "Size of Frame Should be - (500 x 300)")
     CheckResult itShouldTestForCorrectFrameDimension() {
-
         Dimension size = frame.getSize();
-
-        assertThat(size.getWidth())
-                .isEqualTo(500);
-        assertThat(size.getHeight())
-                .isEqualTo(300);
-
+        assertThat(size.getWidth()).isEqualTo(500);
+        assertThat(size.getHeight()).isEqualTo(300);
         return correct();
     }
 
     @DynamicTest(order = 6, feedback = "Size of \"Scroll Pane\" Should be - (480 x 100)")
     CheckResult itShouldTestForCorrectJScrollDimension() {
-
         Dimension size = scrollPaneFixture.target().getSize();
-
-        System.out.println("Size = "+ size.getWidth()+"x"+ size.getHeight() );
-
-        assertThat(size.getWidth())
-                .isEqualTo(480);
-        assertThat(size.getHeight())
-                .isEqualTo(100);
-
+        System.out.println("Size = " + size.getWidth() + "x" + size.getHeight());
+        assertThat(size.getWidth()).isEqualTo(480);
+        assertThat(size.getHeight()).isEqualTo(100);
         return correct();
     }
 
     @DynamicTest(order = 7, feedback = "Location  of button \"ADD\" Should be - x= 50  and y = 220)")
     CheckResult addButtonLocation() {
-
         Point location = addButton.target().getLocation();
-
-        System.out.println("x= "+location.getX() + "; y= "+location.getY());
-        assertThat(location.getX())
-                .isEqualTo(50);
-        assertThat(location.getY())
-                .isEqualTo(220);
-
+        System.out.println("x= " + location.getX() + "; y= " + location.getY());
+        assertThat(location.getX()).isEqualTo(50);
+        assertThat(location.getY()).isEqualTo(220);
         return correct();
     }
 
@@ -129,10 +115,10 @@ public class TimeReminderApplicationTest extends SwingTest {
         addButton.click();
         try {
             set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            System.out.println(set_reminder.toString());
+            LOG.info("Created Reminder {}", set_reminder.toString());
         }
         catch (WaitTimedOutError e) {
-            System.out.println("Timeout waiting for the window passed");
+            LOG.error("Timeout waiting for the window passed");
             return wrong("Incorrect Reminder set up window");
         }
         return correct();
@@ -176,7 +162,6 @@ public class TimeReminderApplicationTest extends SwingTest {
             System.out.println("Timeout waiting for the window");
             return wrong("Incorrect Reminder set up window");
         }
-
         set_reminder.button("Cancel").click();
         set_reminder.requireNotVisible();
         return correct();
@@ -195,7 +180,6 @@ public class TimeReminderApplicationTest extends SwingTest {
             System.out.println("Timeout waiting for the window");
             return wrong("Incorrect Reminder set up window");
         }
-
         set_reminder.button("OK").click();
         set_reminder.requireNotVisible();
         return correct();
@@ -205,44 +189,44 @@ public class TimeReminderApplicationTest extends SwingTest {
             feedback = "The Set Reminder window does not have all required components or correct names")
     CheckResult testLabelsReminder() throws Exception {
         addButton.click();
-        Optional field = componentsAvailability(textFieldReminderFrame);
-        if (!field.isPresent() || !(field.get() instanceof JTextField)) {
+        Optional<Component> field = componentsAvailability(textFieldReminderFrame);
+        if (field.isEmpty() || !(field.get() instanceof JTextField)) {
             throw new WrongAnswer("JTextField required with name " + textFieldReminderFrame);
         }
-        Optional cancel = componentsAvailability(cancelButtonReminderFrame);
-        if (!cancel.isPresent() || !(cancel.get() instanceof JButton)) {
+        Optional<Component> cancel = componentsAvailability(cancelButtonReminderFrame);
+        if (cancel.isEmpty() || !(cancel.get() instanceof JButton)) {
             throw new WrongAnswer("JButton required with name " + cancelButtonReminderFrame);
         }
-        Optional ok = componentsAvailability(okButtonReminderFrame);
-        if (!ok.isPresent() || !(ok.get() instanceof JButton)) {
+        Optional<Component> ok = componentsAvailability(okButtonReminderFrame);
+        if (ok.isEmpty() || !(ok.get() instanceof JButton)) {
             throw new WrongAnswer("JButton required with name " + okButtonReminderFrame);
         }
-        Optional textLabel = componentsAvailability(textLabelReminderFrame);
-        if (!textLabel.isPresent() || !(textLabel.get() instanceof JLabel)) {
+        Optional<Component> textLabel = componentsAvailability(textLabelReminderFrame);
+        if (textLabel.isEmpty() || !(textLabel.get() instanceof JLabel)) {
             throw new WrongAnswer("JLabel required with name " + textLabelReminderFrame);
         }
-        Optional delaysLabel = componentsAvailability(delaysLabelReminderFrame);
-        if (!delaysLabel.isPresent() || !(delaysLabel.get() instanceof JLabel)) {
+        Optional<Component> delaysLabel = componentsAvailability(delaysLabelReminderFrame);
+        if (delaysLabel.isEmpty() || !(delaysLabel.get() instanceof JLabel)) {
             throw new WrongAnswer("JLabel required with name " + delaysLabelReminderFrame);
         }
-        Optional setDelaysLabel = componentsAvailability(setDelayLabelReminderFrame);
-        if (!setDelaysLabel.isPresent() || !(setDelaysLabel.get() instanceof JLabel)) {
+        Optional<Component> setDelaysLabel = componentsAvailability(setDelayLabelReminderFrame);
+        if (setDelaysLabel.isEmpty() || !(setDelaysLabel.get() instanceof JLabel)) {
             throw new WrongAnswer("JLabel required with name " + setDelayLabelReminderFrame);
         }
-        Optional setRepeatLabelRM = componentsAvailability(setRepeatLabelReminderFrame);
-        if (!setRepeatLabelRM.isPresent() || !(setRepeatLabelRM.get() instanceof JLabel)) {
+        Optional<Component> setRepeatLabelRM = componentsAvailability(setRepeatLabelReminderFrame);
+        if (setRepeatLabelRM.isEmpty() || !(setRepeatLabelRM.get() instanceof JLabel)) {
             throw new WrongAnswer("JLabel required with name " + setRepeatLabelReminderFrame);
         }
-        Optional setDelayRM = componentsAvailability(setDelayReminderFrame);
-        if (!setDelayRM.isPresent() || !(setDelayRM.get() instanceof JComboBox)) {
+        Optional<Component> setDelayRM = componentsAvailability(setDelayReminderFrame);
+        if (setDelayRM.isEmpty() || !(setDelayRM.get() instanceof JComboBox)) {
             throw new WrongAnswer("JComboBox required with name " + setDelayReminderFrame);
         }
-        Optional setPeriodRM = componentsAvailability(setPeriodReminderFrame);
-        if (!setPeriodRM.isPresent() || !(setPeriodRM.get() instanceof JComboBox)) {
+        Optional<Component> setPeriodRM = componentsAvailability(setPeriodReminderFrame);
+        if (setPeriodRM.isEmpty() || !(setPeriodRM.get() instanceof JComboBox)) {
             throw new WrongAnswer("JComboBox required with name " + setPeriodReminderFrame);
         }
-        Optional periodLabelRM = componentsAvailability(periodLabelReminderFrame);
-        if (!periodLabelRM.isPresent() || !(periodLabelRM.get() instanceof JLabel)) {
+        Optional<Component> periodLabelRM = componentsAvailability(periodLabelReminderFrame);
+        if (periodLabelRM.isEmpty() || !(periodLabelRM.get() instanceof JLabel)) {
             throw new WrongAnswer("JLabel required with name " + periodLabelReminderFrame);
         }
         return correct();
@@ -252,7 +236,7 @@ public class TimeReminderApplicationTest extends SwingTest {
         setReminders();
         String[] contents = jListFixture.contents();
         for (int i = 0; i < contents.length; i++) {
-            System.out.println(jListFixture.valueAt(i));
+            LOG.info("Selected Reminder from Jlist {}", jListFixture.valueAt(i));
             if (!jListFixture.valueAt(i)
                              .equals("Reminder Text: " + listOftext[i] + "; Delay: " + delayMap.get(i) +
                                      "; Period: " + periodMap.get(i) + ";")) {
@@ -262,7 +246,7 @@ public class TimeReminderApplicationTest extends SwingTest {
                                 jListFixture.valueAt(i));
             }
             jListFixture.clickItem(i).toString();
-            System.out.println("List size " + contents.length);
+            LOG.info("List size {}", jListFixture.contents().length);
 
         }
         return correct();
@@ -283,7 +267,7 @@ public class TimeReminderApplicationTest extends SwingTest {
                                 jListFixture.valueAt(i));
             }
             jListFixture.clickItem(i).toString();
-            System.out.println("List size " + contents.length);
+            LOG.info("List size {}", jListFixture.contents().length);
 
         }
         return correct();
@@ -293,7 +277,7 @@ public class TimeReminderApplicationTest extends SwingTest {
         String[] contents = jListFixture.contents();
         Iterator<String> iterator = Arrays.stream(contents).iterator();
         while (iterator.hasNext() && jListFixture.contents().length != 0) {
-            System.out.println(jListFixture.contents().length + " length");
+            LOG.info("List size {}", jListFixture.contents().length);
             jListFixture.clickItem(0);
             Thread.sleep(200);
             deleteButton.click();
@@ -312,7 +296,7 @@ public class TimeReminderApplicationTest extends SwingTest {
             System.out.println(set_reminder.toString());
         }
         catch (WaitTimedOutError e) {
-            System.out.println("Catch");
+            LOG.debug("Timeout waiting for {}", e.toString());
             return wrong("Timeout waiting for ");
         }
         set_reminder.requireTitle("Set Reminder");
@@ -325,13 +309,72 @@ public class TimeReminderApplicationTest extends SwingTest {
             System.out.println(set_reminder.toString());
         }
         catch (WaitTimedOutError e) {
-            System.out.println("Catch");
+            LOG.debug("Timeout waiting for {}", e.toString());
             return wrong("Timeout waiting for ");
         }
         return correct();
     }
 
-    private Optional componentsAvailability(String name) {
+    @DynamicTest(order = 20, feedback = "OK button in 'Set Reminder' should  be disabled")
+    CheckResult okButtonCheck1() throws Exception {
+        Thread.sleep(4000);
+        addButton.click();
+        try {
+            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
+            System.out.println(set_reminder.toString());
+        }
+        catch (WaitTimedOutError e) {
+            System.out.println("Catch");
+            return wrong("Timeout waiting for ");
+        }
+        set_reminder.requireTitle("Set Reminder");
+        set_reminder.textBox("Field").setText("Test 1 reminder OK button check");
+        set_reminder.comboBox(setDelayReminderFrame).selectItem(3);
+        set_reminder.button("OK").click();
+        Thread.sleep(8000);
+        try {
+            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
+            System.out.println(set_reminder.toString());
+        }
+        catch (WaitTimedOutError e) {
+            System.out.println("Catch");
+            return wrong("Timeout waiting for ");
+        }
+        set_reminder.button("OK").requireDisabled();
+        return correct();
+    }
+
+    @DynamicTest(order = 21, feedback = "OK button in 'Set Reminder' should  be disabled")
+    CheckResult okButtonCheck2() throws Exception {
+        Thread.sleep(4000);
+        jListFixture.clickItem(0);
+        editButton.click();
+        try {
+            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
+            System.out.println(set_reminder.toString());
+        }
+        catch (WaitTimedOutError e) {
+            System.out.println("Catch");
+            return wrong("Timeout waiting for ");
+        }
+        set_reminder.requireTitle("Set Reminder");
+        set_reminder.textBox("Field").setText("Test 2 reminder OK button check");
+        set_reminder.comboBox(setDelayReminderFrame).selectItem(3);
+        set_reminder.button("OK").click();
+        Thread.sleep(8000);
+        try {
+            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
+            System.out.println(set_reminder.toString());
+        }
+        catch (WaitTimedOutError e) {
+            System.out.println("Catch");
+            return wrong("Timeout waiting for ");
+        }
+        set_reminder.button("OK").requireDisabled();
+        return correct();
+    }
+
+    private Optional<Component> componentsAvailability(String name) {
         Optional<Component> first = getAllComponents(set_reminder.target()).stream().filter(it ->
                 it.getName() != null && it.getName().equals(name)).findFirst();
         return first;
@@ -360,7 +403,6 @@ public class TimeReminderApplicationTest extends SwingTest {
             set_reminder.comboBox(setPeriodReminderFrame).selectItem(contents.length - i);
             set_reminder.button("OK").click();
 
-
         }
     }
 
@@ -382,7 +424,6 @@ public class TimeReminderApplicationTest extends SwingTest {
             set_reminder.comboBox(setDelayReminderFrame).selectItem(i);
             set_reminder.comboBox(setPeriodReminderFrame).selectItem(i);
             set_reminder.button("OK").click();
-
 
         }
     }
