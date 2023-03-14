@@ -18,9 +18,9 @@
 /.idea/modules/Reminder application/stage3/out/
 /.idea/modules/Reminder application/stage2/out/
 /.idea/modules/Reminder application/stage1/out/
-#/Reminder application/stage1/out/
-#/Reminder application/stage2/out/
-#/Reminder application/stage3/out/
-#/Reminder application/stage4/out/
-#/Reminder application/stage1/src/reminderapplication/img.png
-#/Reminder application/stage1/src/reminderapplication/img1.png
+/Reminder application/stage1/out/
+/Reminder application/stage2/out/
+/Reminder application/stage3/out/
+/Reminder application/stage4/out/
+/Reminder application/stage1/src/reminderapplication/img.png
+/Reminder application/stage1/src/reminderapplication/img1.png
