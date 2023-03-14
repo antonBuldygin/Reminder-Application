@@ -25,7 +25,7 @@ import static org.hyperskill.hstest.testcase.CheckResult.correct;
 import static org.hyperskill.hstest.testcase.CheckResult.wrong;
 
 public class TimeReminderApplicationTest extends SwingTest {
-    FrameFixture set_reminder;
+    FrameFixture setReminder;
     String textFieldReminderFrame = "Field";
     String cancelButtonReminderFrame = "Cancel";
     String okButtonReminderFrame = "OK";
@@ -113,8 +113,8 @@ public class TimeReminderApplicationTest extends SwingTest {
     CheckResult test2() throws Exception {
         addButton.click();
         try {
-            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            LOG.info("Created Reminder {}", set_reminder.toString());
+            setReminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
+            LOG.info("Created Reminder {}", setReminder.toString());
         }
         catch (WaitTimedOutError e) {
             LOG.error("Timeout waiting for the window passed");
@@ -143,8 +143,8 @@ public class TimeReminderApplicationTest extends SwingTest {
 
     @DynamicTest(order = 12, feedback = "Default Close Operation should be Exit on Close")
     CheckResult rminderFrameDefaultCloseOperation() {
-        set_reminder.close();
-        set_reminder.requireNotVisible();
+        setReminder.close();
+        setReminder.requireNotVisible();
         return correct();
     }
 
@@ -153,15 +153,15 @@ public class TimeReminderApplicationTest extends SwingTest {
     CheckResult test3() throws Exception {
         addButton.click();
         try {
-            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
+            setReminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
             LOG.info(setReminderToString);
         }
         catch (WaitTimedOutError e) {
             LOG.error("Timeout waiting for the window passed");
             return wrong("Incorrect Reminder set up window");
         }
-        set_reminder.button("Cancel").click();
-        set_reminder.requireNotVisible();
+        setReminder.button("Cancel").click();
+        setReminder.requireNotVisible();
         return correct();
     }
 
@@ -170,16 +170,16 @@ public class TimeReminderApplicationTest extends SwingTest {
     CheckResult testOkButton() throws Exception {
         addButton.click();
         try {
-            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            setReminderToString = set_reminder.toString();
+            setReminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
+            setReminderToString = setReminder.toString();
             LOG.info(setReminderToString);
         }
         catch (WaitTimedOutError e) {
             LOG.error("Timeout waiting for the window passed");
             return wrong("Incorrect Reminder set up window");
         }
-        set_reminder.button("OK").click();
-        set_reminder.requireNotVisible();
+        setReminder.button("OK").click();
+        setReminder.requireNotVisible();
         return correct();
     }
 
@@ -290,21 +290,21 @@ public class TimeReminderApplicationTest extends SwingTest {
     CheckResult test6() throws Exception {
         addButton.click();
         try {
-            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            LOG.info(set_reminder.toString());
+            setReminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
+            LOG.info(setReminder.toString());
         }
         catch (WaitTimedOutError e) {
             LOG.debug("Timeout waiting for {}", e.toString());
             return wrong("Timeout waiting for ");
         }
-        set_reminder.requireTitle("Set Reminder");
-        set_reminder.textBox("Field").setText("Test reminder starts after set delay");
-        set_reminder.comboBox(setDelayReminderFrame).selectItem(3);
-        set_reminder.button("OK").click();
+        setReminder.requireTitle("Set Reminder");
+        setReminder.textBox("Field").setText("Test reminder starts after set delay");
+        setReminder.comboBox(setDelayReminderFrame).selectItem(3);
+        setReminder.button("OK").click();
         Thread.sleep(8000);
         try {
-            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            LOG.info(set_reminder.toString());
+            setReminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
+            LOG.info(setReminder.toString());
         }
         catch (WaitTimedOutError e) {
             LOG.error("Timeout waiting for {}", e.toString());
@@ -318,27 +318,27 @@ public class TimeReminderApplicationTest extends SwingTest {
         Thread.sleep(4000);
         addButton.click();
         try {
-            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            LOG.info(set_reminder.toString());
+            setReminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
+            LOG.info(setReminder.toString());
         }
         catch (WaitTimedOutError e) {
             LOG.error("Timeout waiting for {}", e.toString());
             return wrong("Timeout waiting for ");
         }
-        set_reminder.requireTitle("Set Reminder");
-        set_reminder.textBox("Field").setText("Test 1 reminder OK button check");
-        set_reminder.comboBox(setDelayReminderFrame).selectItem(3);
-        set_reminder.button("OK").click();
+        setReminder.requireTitle("Set Reminder");
+        setReminder.textBox("Field").setText("Test 1 reminder OK button check");
+        setReminder.comboBox(setDelayReminderFrame).selectItem(3);
+        setReminder.button("OK").click();
         Thread.sleep(8000);
         try {
-            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            LOG.info(set_reminder.toString());
+            setReminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
+            LOG.info(setReminder.toString());
         }
         catch (WaitTimedOutError e) {
             LOG.error("Timeout waiting for {}", e.toString());
             return wrong("Timeout waiting for ");
         }
-        set_reminder.button("OK").requireDisabled();
+        setReminder.button("OK").requireDisabled();
         return correct();
     }
 
@@ -348,32 +348,32 @@ public class TimeReminderApplicationTest extends SwingTest {
         jListFixture.clickItem(0);
         editButton.click();
         try {
-            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            LOG.info(set_reminder.toString());
+            setReminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
+            LOG.info(setReminder.toString());
         }
         catch (WaitTimedOutError e) {
             LOG.error("Timeout waiting for {}", e.toString());
             return wrong("Timeout waiting for ");
         }
-        set_reminder.requireTitle("Set Reminder");
-        set_reminder.textBox("Field").setText("Test 2 reminder OK button check");
-        set_reminder.comboBox(setDelayReminderFrame).selectItem(3);
-        set_reminder.button("OK").click();
+        setReminder.requireTitle("Set Reminder");
+        setReminder.textBox("Field").setText("Test 2 reminder OK button check");
+        setReminder.comboBox(setDelayReminderFrame).selectItem(3);
+        setReminder.button("OK").click();
         Thread.sleep(8000);
         try {
-            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            LOG.info(set_reminder.toString());
+            setReminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
+            LOG.info(setReminder.toString());
         }
         catch (WaitTimedOutError e) {
             LOG.error("Timeout waiting for {}", e.toString());
             return wrong("Timeout waiting for ");
         }
-        set_reminder.button("OK").requireDisabled();
+        setReminder.button("OK").requireDisabled();
         return correct();
     }
 
     private Optional<Component> componentsAvailability(String name) {
-        Optional<Component> first = getAllComponents(set_reminder.target()).stream().filter(it ->
+        Optional<Component> first = getAllComponents(setReminder.target()).stream().filter(it ->
                 it.getName() != null && it.getName().equals(name)).findFirst();
         return first;
     }
@@ -386,20 +386,20 @@ public class TimeReminderApplicationTest extends SwingTest {
             LOG.info("JList value at  {}", jListFixture.valueAt(i - 1));
             editButton.click();
             try {
-                set_reminder =
+                setReminder =
                         WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-                LOG.info(set_reminder.toString());
+                LOG.info(setReminder.toString());
             }
             catch (WaitTimedOutError e) {
                 LOG.error("Timeout waiting for {}", e.toString());
 
             }
-            set_reminder.textBox("Field").enterText(text5ForReminder);
-            set_reminder.textBox("Field").enterText(text4ForReminder);
+            setReminder.textBox("Field").enterText(text5ForReminder);
+            setReminder.textBox("Field").enterText(text4ForReminder);
             listOftext[i - 1] = listOftext[i - 1] + text5ForReminder + text4ForReminder;
-            set_reminder.comboBox(setDelayReminderFrame).selectItem(contents.length - i);
-            set_reminder.comboBox(setPeriodReminderFrame).selectItem(contents.length - i);
-            set_reminder.button("OK").click();
+            setReminder.comboBox(setDelayReminderFrame).selectItem(contents.length - i);
+            setReminder.comboBox(setPeriodReminderFrame).selectItem(contents.length - i);
+            setReminder.button("OK").click();
 
         }
     }
@@ -410,18 +410,18 @@ public class TimeReminderApplicationTest extends SwingTest {
                 addButton.click();
             }
             try {
-                set_reminder =
+                setReminder =
                         WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-                LOG.info(set_reminder.toString());
+                LOG.info(setReminder.toString());
             }
             catch (WaitTimedOutError e) {
                 LOG.error("Timeout waiting for {}", e.toString());
 
             }
-            set_reminder.textBox("Field").setText(listOftext[i]);
-            set_reminder.comboBox(setDelayReminderFrame).selectItem(i);
-            set_reminder.comboBox(setPeriodReminderFrame).selectItem(i);
-            set_reminder.button("OK").click();
+            setReminder.textBox("Field").setText(listOftext[i]);
+            setReminder.comboBox(setDelayReminderFrame).selectItem(i);
+            setReminder.comboBox(setPeriodReminderFrame).selectItem(i);
+            setReminder.button("OK").click();
 
         }
     }

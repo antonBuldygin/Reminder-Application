@@ -23,7 +23,7 @@ import static org.hyperskill.hstest.testcase.CheckResult.correct;
 import static org.hyperskill.hstest.testcase.CheckResult.wrong;
 
 public class TimeReminderApplicationTest extends SwingTest {
-    FrameFixture set_reminder;
+    FrameFixture setReminder;
     String textFieldReminderFrame = "Field";
     String cancelButtonReminderFrame = "Cancel";
     String okButtonReminderFrame = "OK";
@@ -111,8 +111,8 @@ public class TimeReminderApplicationTest extends SwingTest {
     CheckResult test2() throws Exception {
         addButton.click();
         try {
-            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            LOG.info("Created Reminder: {}", set_reminder.toString());
+            setReminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
+            LOG.info("Created Reminder: {}", setReminder.toString());
         }
         catch (WaitTimedOutError e) {
             LOG.error("Timeout waiting for the window passed");
@@ -141,8 +141,8 @@ public class TimeReminderApplicationTest extends SwingTest {
 
     @DynamicTest(order = 12, feedback = "Default Close Operation should be Exit on Close")
     CheckResult rminderFrameDefaultCloseOperation() {
-        set_reminder.close();
-        set_reminder.requireNotVisible();
+        setReminder.close();
+        setReminder.requireNotVisible();
         return correct();
     }
 
@@ -151,16 +151,16 @@ public class TimeReminderApplicationTest extends SwingTest {
     CheckResult test3() throws Exception {
         addButton.click();
         try {
-            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            setReminderToString = set_reminder.toString();
+            setReminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
+            setReminderToString = setReminder.toString();
             LOG.info(setReminderToString);
         }
         catch (WaitTimedOutError e) {
             LOG.error("Timeout waiting for the window passed");
             return wrong("Incorrect Reminder set up window");
         }
-        set_reminder.button("Cancel").click();
-        set_reminder.requireNotVisible();
+        setReminder.button("Cancel").click();
+        setReminder.requireNotVisible();
         return correct();
     }
 
@@ -169,16 +169,16 @@ public class TimeReminderApplicationTest extends SwingTest {
     CheckResult testOkButton() throws Exception {
         addButton.click();
         try {
-            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            setReminderToString = set_reminder.toString();
+            setReminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
+            setReminderToString = setReminder.toString();
             LOG.info(setReminderToString);
         }
         catch (WaitTimedOutError e) {
             LOG.error("Timeout waiting for the window passed");
             return wrong("Incorrect Reminder set up window");
         }
-        set_reminder.button("OK").click();
-        set_reminder.requireNotVisible();
+        setReminder.button("OK").click();
+        setReminder.requireNotVisible();
         return correct();
     }
 
@@ -231,7 +231,7 @@ public class TimeReminderApplicationTest extends SwingTest {
 
     @DynamicTest(order = 16, feedback = "Wrong text in Reminder JTextField") CheckResult JTextFieldtest() {
         try {
-            set_reminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
+            setReminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
             LOG.info(setReminderToString);
         }
         catch (WaitTimedOutError e) {
@@ -239,10 +239,10 @@ public class TimeReminderApplicationTest extends SwingTest {
 
         }
         for (int i = 0; i < listOftext.length; i++) {
-            set_reminder.textBox("Field").setText(listOftext[i]);
-            LOG.info("Field text: {}", set_reminder.textBox("Field").text());
+            setReminder.textBox("Field").setText(listOftext[i]);
+            LOG.info("Field text: {}", setReminder.textBox("Field").text());
             LOG.info("expected Field text: {}", listOftext[i]);
-            set_reminder.textBox("Field").requireText(listOftext[i]);
+            setReminder.textBox("Field").requireText(listOftext[i]);
 
         }
         return correct();
@@ -251,19 +251,19 @@ public class TimeReminderApplicationTest extends SwingTest {
     @DynamicTest(order = 17,
             feedback = "Wrong text in Reminder set delay Combobox or wrong text in Delays Label")
     CheckResult delayComboBoxtest() {
-        String[] contents = set_reminder.comboBox(setDelayReminderFrame).contents();
+        String[] contents = setReminder.comboBox(setDelayReminderFrame).contents();
         for (int i = 0; i < contents.length; i++) {
-            set_reminder.comboBox(setDelayReminderFrame).selectItem(i);
+            setReminder.comboBox(setDelayReminderFrame).selectItem(i);
             LOG.info("Delay ComboBox selected item: {}",
-                    set_reminder.comboBox(setDelayReminderFrame).selectedItem());
+                    setReminder.comboBox(setDelayReminderFrame).selectedItem());
             LOG.info("Delay to be selected:  {}", delayMap.get(i));
-            LOG.info("Delays label text:  {}", set_reminder.label("Delays Label").text());
-            set_reminder.label("Delays Label").requireText(delayMap.get(i).toString());
-            if (Integer.parseInt(set_reminder.comboBox(setDelayReminderFrame).selectedItem()) !=
+            LOG.info("Delays label text:  {}", setReminder.label("Delays Label").text());
+            setReminder.label("Delays Label").requireText(delayMap.get(i).toString());
+            if (Integer.parseInt(setReminder.comboBox(setDelayReminderFrame).selectedItem()) !=
                     (delayMap.get(i))) {
                 throw new WrongAnswer(
                         "set delay Combobox required with value " + delayMap.get(i) + " but it was " +
-                                "with value " + set_reminder.comboBox(setDelayReminderFrame).selectedItem());
+                                "with value " + setReminder.comboBox(setDelayReminderFrame).selectedItem());
             }
         }
         return correct();
@@ -271,26 +271,26 @@ public class TimeReminderApplicationTest extends SwingTest {
 
     @DynamicTest(order = 18, feedback = "Wrong text in Reminder set period Combobox")
     CheckResult periodComboBoxtest() {
-        String[] contents = set_reminder.comboBox(setPeriodReminderFrame).contents();
+        String[] contents = setReminder.comboBox(setPeriodReminderFrame).contents();
         for (int i = 0; i < contents.length; i++) {
-            set_reminder.comboBox(setPeriodReminderFrame).selectItem(i);
+            setReminder.comboBox(setPeriodReminderFrame).selectItem(i);
             LOG.info("Period ComboBox selected item: {}",
-                    set_reminder.comboBox(setPeriodReminderFrame).selectedItem());
+                    setReminder.comboBox(setPeriodReminderFrame).selectedItem());
             LOG.info("Period to be selected:  {}", periodMap.get(i));
-            LOG.info("Period label text:  {}", set_reminder.label("Period label").text());
-            set_reminder.label("Period label").requireText(periodMap.get(i).toString());
-            if (Integer.parseInt(set_reminder.comboBox(setPeriodReminderFrame).selectedItem()) !=
+            LOG.info("Period label text:  {}", setReminder.label("Period label").text());
+            setReminder.label("Period label").requireText(periodMap.get(i).toString());
+            if (Integer.parseInt(setReminder.comboBox(setPeriodReminderFrame).selectedItem()) !=
                     (periodMap.get(i))) {
                 throw new WrongAnswer(
                         "set period Combobox required with value " + periodMap.get(i) + " but it was " +
-                                "with value " + set_reminder.comboBox(setPeriodReminderFrame).selectedItem());
+                                "with value " + setReminder.comboBox(setPeriodReminderFrame).selectedItem());
             }
         }
         return correct();
     }
 
     private Optional<Component> componentsAvailability(String name) {
-        Optional<Component> first = getAllComponents(set_reminder.target()).stream().filter(it ->
+        Optional<Component> first = getAllComponents(setReminder.target()).stream().filter(it ->
                 it.getName() != null && it.getName().equals(name)).findFirst();
         return first;
     }
