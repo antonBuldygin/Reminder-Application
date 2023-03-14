@@ -1,5 +1,8 @@
 package reminderapplication;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -8,7 +11,7 @@ import java.awt.event.WindowEvent;
 public class ReminderFrame extends JFrame {
     private final static Integer[] delays = {30, 25, 15, 5};
     private final static Integer[] repeatPeriod = {0, 5, 10, 20};
-
+    private static final Logger LOG = LoggerFactory.getLogger(ReminderFrame.class);
     JButton addButton;
     JButton editButton;
     JButton deleteButton;
@@ -82,7 +85,7 @@ public class ReminderFrame extends JFrame {
         setLayout(null);
         addWindowListener(new WindowAdapter() {
             @Override public void windowClosing(WindowEvent e) {
-                System.out.println("Closed");
+                LOG.error("Set Reminder Closed");
                 flag = false;
                 addButton.setEnabled(true);
                 deleteButton.setEnabled(true);

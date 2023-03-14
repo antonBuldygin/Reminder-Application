@@ -19,7 +19,6 @@ public class Controller implements ActionListener {
             reminderFrame.dispose();
         }
         if (actionEvent.getSource() == reminderFrame.cancelButton) {
-            System.out.println("Cancel " + reminderFrame.text);
             reminderFrame.textField.setText(reminderFrame.text);
             reminderFrame.flag = false;
             reminderFrame.addButton.setEnabled(true);

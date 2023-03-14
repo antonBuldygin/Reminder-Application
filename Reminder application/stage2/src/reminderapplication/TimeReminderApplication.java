@@ -1,12 +1,15 @@
 package reminderapplication;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.Rectangle;
 
 public class TimeReminderApplication extends JFrame {
-
+    private static final Logger LOG = LoggerFactory.getLogger(TimeReminderApplication.class);
     ReminderFrame reminderFrame = null;
     ReminderFrame selectedValue;
     JScrollPane scrollPane;
@@ -65,7 +68,8 @@ public class TimeReminderApplication extends JFrame {
                 reminderFrame.setVisible(true);
                 reminderFrame.flag = true;
                 reminderFrame.okButton.setEnabled(true);
-                System.out.println("Reminder Frames list size " + b.getModel().getSize());
+                LOG.info("Reminder Frames list size: {}", b.getModel().getSize());
+
             }
             if (!reminderFrame.flag) {
                 reminderFrame.flag = true;

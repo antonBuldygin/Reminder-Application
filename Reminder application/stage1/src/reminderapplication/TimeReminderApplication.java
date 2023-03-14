@@ -7,16 +7,11 @@ import java.awt.Rectangle;
 
 public class TimeReminderApplication extends JFrame {
 
-    ReminderFrame reminderFrame = null;
-    ReminderFrame selectedValue;
     JScrollPane scrollPane;
-
-    JList<ReminderFrame> b;
-
-    JButton editButton;
+    JList b;
     JButton deleteButton;
     JButton addButton;
-    Model model;
+    JButton editButton;
 
     public TimeReminderApplication() throws HeadlessException {
         super("Reminder Application");
@@ -48,8 +43,7 @@ public class TimeReminderApplication extends JFrame {
         addButton.setBounds(50, 220, 100, 30);
         editButton.setBounds(180, 220, 100, 30);
         deleteButton.setBounds(300, 220, 100, 30);
-        model = new Model();
-        b = new JList(model);
+        b = new JList();
         b.getLastVisibleIndex();
         b.setName("List of Reminders");
         scrollPane = new JScrollPane(b);
@@ -57,33 +51,12 @@ public class TimeReminderApplication extends JFrame {
         scrollPane.setBounds(5, 5, 480, 100);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         add(scrollPane);
-        addButton.addActionListener(e -> {
-            reminderFrame = new ReminderFrame(this);
-            if (!reminderFrame.flag) {
-                addButton.setEnabled(false);
-                deleteButton.setEnabled(false);
-                editButton.setEnabled(false);
-                reminderFrame.setVisible(true);
-                reminderFrame.flag = true;
-                reminderFrame.okButton.setEnabled(true);
-
-            }
-            if (!reminderFrame.flag) {
-                reminderFrame.flag = true;
-                System.out.println(model.size());
-            }
-        });
-        b.getSelectionModel().addListSelectionListener(e -> {
-            selectedValue = b.getSelectedValue();
-
-        });
-        editButton.addActionListener(e -> {
-            if (selectedValue != null) {
-                selectedValue.okButton.setEnabled(true);
-                selectedValue.toEdit = true;
-                selectedValue.setVisible(true);
-            }
-        });
+        scrollPane.setVisible(true);
+        b.setVisible(true);
+        b.setEnabled(true);
+        deleteButton.setEnabled(true);
+        addButton.setEnabled(true);
+        editButton.setVisible(true);
 
     }
 }

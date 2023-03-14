@@ -1,18 +1,16 @@
 type: edu
 files:
-- name: src/reminderapplication/Main.java
-  visible: true
-- name: src/reminderapplication/TimeReminderApplication.java
-  visible: true
-- name: src/reminderapplication/ReminderFrame.java
-  visible: true
-- name: src/reminderapplication/Music.java
-  visible: true
-- name: src/reminderapplication/Controller.java
-  visible: true
-- name: src/reminderapplication/Model.java
-  visible: true
-- name: src/reminderapplication/music.wav
-  visible: true
-- name: test/TimeReminderApplicationTest.java
-  visible: true
+  - name: src/reminderapplication/Main.java
+    visible: true
+  - name: src/reminderapplication/TimeReminderApplication.java
+    visible: true
+  - name: src/reminderapplication/ReminderFrame.java
+    visible: true
+
+  - name: src/reminderapplication/Controller.java
+    visible: true
+  - name: src/reminderapplication/Model.java
+    visible: true
+
+  - name: test/TimeReminderApplicationTest.java
+    visible: true
