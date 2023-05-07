@@ -9,8 +9,6 @@ import org.hyperskill.hstest.exception.outcomes.WrongAnswer;
 import org.hyperskill.hstest.stage.SwingTest;
 import org.hyperskill.hstest.testcase.CheckResult;
 import org.hyperskill.hstest.testing.swing.SwingComponent;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import reminderapplication.TimeReminderApplication;
 
 import javax.swing.*;
@@ -51,7 +49,7 @@ public class TimeReminderApplicationTest extends SwingTest {
     @SwingComponent(name = "DeleteReminder") private JButtonFixture deleteButton;
     @SwingComponent(name = "List of Reminders") private JListFixture jListFixture;
 
-    private static final Logger LOG = LoggerFactory.getLogger(TimeReminderApplicationTest.class);
+//    private static final Logger LOG = LoggerFactory.getLogger(TimeReminderApplicationTest.class);
 
     public TimeReminderApplicationTest() {
         super(new TimeReminderApplication());
@@ -94,7 +92,7 @@ public class TimeReminderApplicationTest extends SwingTest {
     @DynamicTest(order = 6, feedback = "Size of \"Scroll Pane\" Should be - (480 x 100)")
     CheckResult itShouldTestForCorrectJScrollDimension() {
         Dimension size = scrollPaneFixture.target().getSize();
-        LOG.info("Size = {} x {}", size.getWidth(), size.getHeight());
+//        LOG.info("Size = {} x {}", size.getWidth(), size.getHeight());
         assertThat(size.getWidth()).isEqualTo(480);
         assertThat(size.getHeight()).isEqualTo(100);
         return correct();
@@ -103,7 +101,7 @@ public class TimeReminderApplicationTest extends SwingTest {
     @DynamicTest(order = 7, feedback = "Location  of button \"ADD\" Should be - x= 50  and y = 220)")
     CheckResult addButtonLocation() {
         Point location = addButton.target().getLocation();
-        LOG.info("x=  {} , y=  {}", location.getX(), location.getY());
+//        LOG.info("x=  {} , y=  {}", location.getX(), location.getY());
         assertThat(location.getX()).isEqualTo(50);
         assertThat(location.getY()).isEqualTo(220);
         return correct();
@@ -114,10 +112,10 @@ public class TimeReminderApplicationTest extends SwingTest {
         addButton.click();
         try {
             setReminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            LOG.info("Created Reminder {}", setReminder.toString());
+//            LOG.info("Created Reminder {}", setReminder.toString());
         }
         catch (WaitTimedOutError e) {
-            LOG.error("Timeout waiting for the window passed");
+//            LOG.error("Timeout waiting for the window passed");
             return wrong("Incorrect Reminder set up window");
         }
         return correct();
@@ -154,10 +152,10 @@ public class TimeReminderApplicationTest extends SwingTest {
         addButton.click();
         try {
             setReminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            LOG.info(setReminderToString);
+//            LOG.info(setReminderToString);
         }
         catch (WaitTimedOutError e) {
-            LOG.error("Timeout waiting for the window passed");
+//            LOG.error("Timeout waiting for the window passed");
             return wrong("Incorrect Reminder set up window");
         }
         setReminder.button("Cancel").click();
@@ -172,10 +170,10 @@ public class TimeReminderApplicationTest extends SwingTest {
         try {
             setReminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
             setReminderToString = setReminder.toString();
-            LOG.info(setReminderToString);
+//            LOG.info(setReminderToString);
         }
         catch (WaitTimedOutError e) {
-            LOG.error("Timeout waiting for the window passed");
+//            LOG.error("Timeout waiting for the window passed");
             return wrong("Incorrect Reminder set up window");
         }
         setReminder.button("OK").click();
@@ -234,7 +232,7 @@ public class TimeReminderApplicationTest extends SwingTest {
         setReminders();
         String[] contents = jListFixture.contents();
         for (int i = 0; i < contents.length; i++) {
-            LOG.info("Selected Reminder from Jlist: {}", jListFixture.valueAt(i));
+//            LOG.info("Selected Reminder from Jlist: {}", jListFixture.valueAt(i));
             if (!jListFixture.valueAt(i)
                              .equals("Reminder Text: " + listOftext[i] + "; Delay: " + delayMap.get(i) +
                                      "; Period: " + periodMap.get(i) + ";")) {
@@ -244,7 +242,7 @@ public class TimeReminderApplicationTest extends SwingTest {
                                 jListFixture.valueAt(i));
             }
             jListFixture.clickItem(i).toString();
-            LOG.info("List size {}", jListFixture.contents().length);
+//            LOG.info("List size {}", jListFixture.contents().length);
 
         }
         return correct();
@@ -254,7 +252,7 @@ public class TimeReminderApplicationTest extends SwingTest {
         addText();
         String[] contents = jListFixture.contents();
         for (int i = 0; i < contents.length; i++) {
-            LOG.info("Reminder {}", jListFixture.valueAt(i));
+//            LOG.info("Reminder {}", jListFixture.valueAt(i));
             if (!jListFixture.valueAt(i).equals("Reminder Text: " + listOftext[i] + "; Delay: " +
                     delayMap.get(contents.length - i - 1) + "; " + "Period: " +
                     periodMap.get(contents.length - i - 1) + ";")) {
@@ -265,7 +263,7 @@ public class TimeReminderApplicationTest extends SwingTest {
                                 jListFixture.valueAt(i));
             }
             jListFixture.clickItem(i).toString();
-            LOG.info("List size {}", jListFixture.contents().length);
+//            LOG.info("List size {}", jListFixture.contents().length);
 
         }
         return correct();
@@ -275,7 +273,7 @@ public class TimeReminderApplicationTest extends SwingTest {
         String[] contents = jListFixture.contents();
         Iterator<String> iterator = Arrays.stream(contents).iterator();
         while (iterator.hasNext() && jListFixture.contents().length != 0) {
-            LOG.info("List size {}", jListFixture.contents().length);
+//            LOG.info("List size {}", jListFixture.contents().length);
             jListFixture.clickItem(0);
             Thread.sleep(200);
             deleteButton.click();
@@ -291,10 +289,10 @@ public class TimeReminderApplicationTest extends SwingTest {
         addButton.click();
         try {
             setReminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            LOG.info(setReminder.toString());
+//            LOG.info(setReminder.toString());
         }
         catch (WaitTimedOutError e) {
-            LOG.debug("Timeout waiting for {}", e.toString());
+//            LOG.debug("Timeout waiting for {}", e.toString());
             return wrong("Timeout waiting for ");
         }
         setReminder.requireTitle("Set Reminder");
@@ -304,10 +302,10 @@ public class TimeReminderApplicationTest extends SwingTest {
         Thread.sleep(8000);
         try {
             setReminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            LOG.info(setReminder.toString());
+//            LOG.info(setReminder.toString());
         }
         catch (WaitTimedOutError e) {
-            LOG.error("Timeout waiting for {}", e.toString());
+//            LOG.error("Timeout waiting for {}", e.toString());
             return wrong("Timeout waiting for ");
         }
         return correct();
@@ -319,10 +317,10 @@ public class TimeReminderApplicationTest extends SwingTest {
         addButton.click();
         try {
             setReminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            LOG.info(setReminder.toString());
+//            LOG.info(setReminder.toString());
         }
         catch (WaitTimedOutError e) {
-            LOG.error("Timeout waiting for {}", e.toString());
+//            LOG.error("Timeout waiting for {}", e.toString());
             return wrong("Timeout waiting for ");
         }
         setReminder.requireTitle("Set Reminder");
@@ -332,10 +330,10 @@ public class TimeReminderApplicationTest extends SwingTest {
         Thread.sleep(8000);
         try {
             setReminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            LOG.info(setReminder.toString());
+//            LOG.info(setReminder.toString());
         }
         catch (WaitTimedOutError e) {
-            LOG.error("Timeout waiting for {}", e.toString());
+//            LOG.error("Timeout waiting for {}", e.toString());
             return wrong("Timeout waiting for ");
         }
         setReminder.button("OK").requireDisabled();
@@ -349,10 +347,10 @@ public class TimeReminderApplicationTest extends SwingTest {
         editButton.click();
         try {
             setReminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            LOG.info(setReminder.toString());
+//            LOG.info(setReminder.toString());
         }
         catch (WaitTimedOutError e) {
-            LOG.error("Timeout waiting for {}", e.toString());
+//            LOG.error("Timeout waiting for {}", e.toString());
             return wrong("Timeout waiting for ");
         }
         setReminder.requireTitle("Set Reminder");
@@ -362,10 +360,10 @@ public class TimeReminderApplicationTest extends SwingTest {
         Thread.sleep(8000);
         try {
             setReminder = WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-            LOG.info(setReminder.toString());
+//            LOG.info(setReminder.toString());
         }
         catch (WaitTimedOutError e) {
-            LOG.error("Timeout waiting for {}", e.toString());
+//            LOG.error("Timeout waiting for {}", e.toString());
             return wrong("Timeout waiting for ");
         }
         setReminder.button("OK").requireDisabled();
@@ -380,18 +378,18 @@ public class TimeReminderApplicationTest extends SwingTest {
 
     private void addText() {
         String[] contents = jListFixture.contents();
-        LOG.info("JList size {}", contents.length);
+//        LOG.info("JList size {}", contents.length);
         for (int i = contents.length; i > 0; i--) {
             jListFixture.clickItem(i - 1);
-            LOG.info("JList value at  {}", jListFixture.valueAt(i - 1));
+//            LOG.info("JList value at  {}", jListFixture.valueAt(i - 1));
             editButton.click();
             try {
                 setReminder =
                         WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-                LOG.info(setReminder.toString());
+//                LOG.info(setReminder.toString());
             }
             catch (WaitTimedOutError e) {
-                LOG.error("Timeout waiting for {}", e.toString());
+//                LOG.error("Timeout waiting for {}", e.toString());
 
             }
             setReminder.textBox("Field").enterText(text5ForReminder);
@@ -412,10 +410,10 @@ public class TimeReminderApplicationTest extends SwingTest {
             try {
                 setReminder =
                         WindowFinder.findFrame("Set Reminder").withTimeout(200).using(getWindow().robot());
-                LOG.info(setReminder.toString());
+//                LOG.info(setReminder.toString());
             }
             catch (WaitTimedOutError e) {
-                LOG.error("Timeout waiting for {}", e.toString());
+//                LOG.error("Timeout waiting for {}", e.toString());
 
             }
             setReminder.textBox("Field").setText(listOftext[i]);
