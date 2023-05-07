@@ -6,8 +6,6 @@ import org.hyperskill.hstest.exception.outcomes.WrongAnswer;
 import org.hyperskill.hstest.stage.SwingTest;
 import org.hyperskill.hstest.testcase.CheckResult;
 import org.hyperskill.hstest.testing.swing.SwingComponent;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import reminderapplication.TimeReminderApplication;
 
 import javax.swing.*;
@@ -23,7 +21,7 @@ public class TimeReminderApplicationTest extends SwingTest {
     @SwingComponent(name = "DeleteReminder") private JButtonFixture deleteButton;
     @SwingComponent(name = "List of Reminders") private JListFixture jListFixture;
 
-    private static final Logger LOG = LoggerFactory.getLogger(TimeReminderApplicationTest.class);
+//    private static final Logger LOG = LoggerFactory.getLogger(TimeReminderApplicationTest.class);
 
     public TimeReminderApplicationTest() {
         super(new TimeReminderApplication());
@@ -71,7 +69,7 @@ public class TimeReminderApplicationTest extends SwingTest {
     @DynamicTest(order = 7, feedback = "Size of \"Scroll Pane\" Should be - (480 x 100)")
     CheckResult itShouldTestForCorrectJScrollDimension() {
         Dimension size = scrollPaneFixture.target().getSize();
-        LOG.info("Size = {}  x  {}", size.getWidth(), size.getHeight());
+//        LOG.info("Size = {}  x  {}", size.getWidth(), size.getHeight());
         assertThat(size.getWidth()).isEqualTo(480);
         assertThat(size.getHeight()).isEqualTo(100);
         return correct();
@@ -80,7 +78,7 @@ public class TimeReminderApplicationTest extends SwingTest {
     @DynamicTest(order = 8, feedback = "Location  of button \"ADD\" Should be - x= 50  and y = 220)")
     CheckResult addButtonLocation() {
         Point location = addButton.target().getLocation();
-        LOG.info("x =  {} , y =  {}", location.getX(), location.getY());
+//        LOG.info("x =  {} , y =  {}", location.getX(), location.getY());
         assertThat(location.getX()).isEqualTo(50);
         assertThat(location.getY()).isEqualTo(220);
         return correct();
