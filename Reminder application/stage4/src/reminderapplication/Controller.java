@@ -1,8 +1,5 @@
 package reminderapplication;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -11,10 +8,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Controller implements ActionListener {
-    private static final Logger LOG = LoggerFactory.getLogger(Controller.class);
+//    private static final Logger LOG = LoggerFactory.getLogger(Controller.class);
 
     ReminderFrame reminderFrame;
 
+    final static Long TOSECONDS = 1000L;
+    final static Long REMINDERPLAYTIME = 5000L;
     public Controller(ReminderFrame reminderFrame) {
         this.reminderFrame = reminderFrame;
     }
@@ -23,10 +22,10 @@ public class Controller implements ActionListener {
         if (actionEvent.getSource() == reminderFrame.okButton) {
             if (!reminderFrame.toEdit) {
                 reminderFrame.text = reminderFrame.textField.getText();
-                LOG.info("ADD no Edit {}", reminderFrame.text);
+//                LOG.info("ADD no Edit {}", reminderFrame.text);
                 reminderFrame.tm.model.addElement(reminderFrame);
                 if (!reminderFrame.tm.model.isEmpty()) {
-                    LOG.info("NUMBER  {}", reminderFrame.tm.model.lastElement());
+//                    LOG.info("NUMBER  {}", reminderFrame.tm.model.lastElement());
 
                 }
                 reminderFrame.flag = false;
@@ -40,19 +39,19 @@ public class Controller implements ActionListener {
                                 "Reminder application/stage4/src/reminderapplication/music.wav").exists()) {
                             String path = new File(
                                     "Reminder application/stage4/src/reminderapplication/music.wav").getAbsolutePath();
-                            LOG.info(path);
+//                            LOG.info(path);
                             music.setFile(path);
                         }
                         else {
                             String path = new File("src/reminderapplication/music.wav").getAbsolutePath();
-                            LOG.info(path);
+//                            LOG.info(path);
                             music.setFile(path);
                         }
                         music.play();
                         reminderFrame.setVisible(true);
                         reminderFrame.okButton.setEnabled(false);
                         try {
-                            Thread.sleep(5000);
+                            Thread.sleep(REMINDERPLAYTIME);
                         }
                         catch (InterruptedException ex) {
                             throw new RuntimeException(ex);
@@ -64,26 +63,26 @@ public class Controller implements ActionListener {
                             throw new RuntimeException(ex);
                         }
                         reminderFrame.setVisible(false);
-                        LOG.info("Task performed on");
+//                        LOG.info("Task performed on");
                         reminderFrame.okButton.setEnabled(false);
                     }
                 };
                 reminderFrame.timer = new Timer();
                 if (!reminderFrame.periodlabel.getText().equals("0")) {
                     reminderFrame.timer.schedule(reminderFrame.task,
-                            Integer.parseInt(reminderFrame.delayslabel.getText()) * 1000L,
-                            Integer.parseInt(reminderFrame.periodlabel.getText()) * 1000L);
+                            Integer.parseInt(reminderFrame.delayslabel.getText()) * TOSECONDS,
+                            Integer.parseInt(reminderFrame.periodlabel.getText()) * TOSECONDS);
                 }
                 if (reminderFrame.periodlabel.getText().equals("0")) {
                     reminderFrame.timer.schedule(reminderFrame.task,
-                            Integer.parseInt(reminderFrame.delayslabel.getText()) * 1000L);
+                            Integer.parseInt(reminderFrame.delayslabel.getText()) * TOSECONDS);
                 }
                 reminderFrame.dispose();
             }
             if (reminderFrame.toEdit) {
                 reminderFrame.flag = false;
                 reminderFrame.text = reminderFrame.textField.getText();
-                LOG.info("OK Edit {}", reminderFrame.text);
+//                LOG.info("OK Edit {}", reminderFrame.text);
                 reminderFrame.addButton.setEnabled(true);
                 reminderFrame.deleteButton.setEnabled(true);
                 reminderFrame.editButton.setEnabled(true);
@@ -96,20 +95,20 @@ public class Controller implements ActionListener {
                                 "Reminder application/stage4/src/reminderapplication/music.wav").exists()) {
                             String path = new File(
                                     "Reminder application/stage4/src/reminderapplication/music.wav").getAbsolutePath();
-                            LOG.info(path);
+//                            LOG.info(path);
                             music.setFile(path);
                         }
                         else {
                             String path = new File("src/reminderapplication/music.wav").getAbsolutePath();
-                            LOG.info(path);
+//                            LOG.info(path);
                             music.setFile(path);
                         }
                         music.play();
-                        LOG.info("Task performed on");
+//                        LOG.info("Task performed on");
                         reminderFrame.setVisible(true);
                         reminderFrame.okButton.setEnabled(false);
                         try {
-                            Thread.sleep(5000);
+                            Thread.sleep(REMINDERPLAYTIME);
                         }
                         catch (InterruptedException ex) {
                             throw new RuntimeException(ex);
@@ -125,12 +124,12 @@ public class Controller implements ActionListener {
                 };
                 if (!reminderFrame.periodlabel.getText().equals("0")) {
                     reminderFrame.timer.schedule(reminderFrame.task,
-                            Integer.parseInt(reminderFrame.delayslabel.getText()) * 1000L,
-                            Integer.parseInt(reminderFrame.periodlabel.getText()) * 1000L);
+                            Integer.parseInt(reminderFrame.delayslabel.getText()) * TOSECONDS,
+                            Integer.parseInt(reminderFrame.periodlabel.getText()) * TOSECONDS);
                 }
                 if (reminderFrame.periodlabel.getText().equals("0")) {
                     reminderFrame.timer.schedule(reminderFrame.task,
-                            Integer.parseInt(reminderFrame.delayslabel.getText()) * 1000L);
+                            Integer.parseInt(reminderFrame.delayslabel.getText()) * TOSECONDS);
                 }
                 reminderFrame.dispose();
                 reminderFrame.tm.scrollPane.repaint();
@@ -149,7 +148,7 @@ public class Controller implements ActionListener {
                 reminderFrame.tm.selectedValue.setVisible(false);
                 reminderFrame.tm.selectedValue.task.cancel();
                 reminderFrame.tm.model.removeElement(reminderFrame.tm.selectedValue);
-                LOG.info("",reminderFrame.tm.model.size());
+//                LOG.info("",reminderFrame.tm.model.size());
 
             }
         }

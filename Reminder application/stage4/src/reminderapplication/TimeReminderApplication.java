@@ -1,8 +1,5 @@
 package reminderapplication;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -19,7 +16,7 @@ public class TimeReminderApplication extends JFrame {
     JButton addButton;
     Model model;
 
-    private static final Logger LOG = LoggerFactory.getLogger(TimeReminderApplication.class);
+//    private static final Logger LOG = LoggerFactory.getLogger(TimeReminderApplication.class);
 
     public TimeReminderApplication() throws HeadlessException {
         super("Reminder Application");
@@ -69,13 +66,13 @@ public class TimeReminderApplication extends JFrame {
                 reminderFrame.setVisible(true);
                 reminderFrame.flag = true;
                 reminderFrame.okButton.setEnabled(true);
-                LOG.info("ADD Button selected, list size {}", model.size());
+//                LOG.info("ADD Button selected, list size {}", model.size());
 
             }
         });
         b.getSelectionModel().addListSelectionListener(e -> {
             selectedValue = b.getSelectedValue();
-            LOG.info("Selected reminder from the  list {}", selectedValue);
+//            LOG.info("Selected reminder from the  list {}", selectedValue);
 
         });
         editButton.addActionListener(e -> {
@@ -83,7 +80,7 @@ public class TimeReminderApplication extends JFrame {
                 selectedValue.okButton.setEnabled(true);
                 selectedValue.toEdit = true;
                 selectedValue.setVisible(true);
-                LOG.info("EDIT button selected {} ", selectedValue);
+//                LOG.info("EDIT button selected {} ", selectedValue);
             }
         });
 
