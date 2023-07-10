@@ -248,7 +248,7 @@ public class TimeReminderApplicationTest extends SwingTest {
                          .equals("Reminder Text: " + listOftext[3] + "; Delay: " + delayMap.get(0) +
                                  "; Period: " + periodMap.get(0) + ";")) {
             throw new WrongAnswer(
-                    "Reminder text should be \"Reminder Text1: " + listOftext[3] + ";" + " Delay: " +
+                    "Reminder text should be \"Reminder Text: " + listOftext[3] + ";" + " Delay: " +
                             delayMap.get(0) + "; Period: " + periodMap.get(0) + ";" + " but it was " +
                             jListFixture.valueAt(0));
         }

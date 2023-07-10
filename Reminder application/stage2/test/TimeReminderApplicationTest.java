@@ -247,9 +247,13 @@ public class TimeReminderApplicationTest extends SwingTest {
     }
 
     @DynamicTest(order = 17,
-            feedback = "Wrong text in Reminder set delay Combobox or wrong text in Delays Label")
+            feedback = "Wrong text in Reminder set delay Combobox or wrong text in Delays Label or size")
     CheckResult delayComboBoxtest() {
         String[] contents = setReminder.comboBox(setDelayReminderFrame).contents();
+        if(contents.length!=delayMap.size()){
+            throw new WrongAnswer("Delay Combobox is incorrect, please check size");
+        }
+
         for (int i = 0; i < contents.length; i++) {
             setReminder.comboBox(setDelayReminderFrame).selectItem(i);
 //            LOG.info("Delay ComboBox selected item: {}",
@@ -270,6 +274,10 @@ public class TimeReminderApplicationTest extends SwingTest {
     @DynamicTest(order = 18, feedback = "Wrong text in Reminder set period Combobox")
     CheckResult periodComboBoxtest() {
         String[] contents = setReminder.comboBox(setPeriodReminderFrame).contents();
+        if(contents.length!=periodMap.size()){
+            throw new WrongAnswer("period Combobox is incorrect, please check size");
+        }
+
         for (int i = 0; i < contents.length; i++) {
             setReminder.comboBox(setPeriodReminderFrame).selectItem(i);
 //            LOG.info("Period ComboBox selected item: {}",
