@@ -392,8 +392,8 @@ public class TimeReminderApplicationTest extends SwingTest {
 //                LOG.error("Timeout waiting for {}", e.toString());
 
             }
-            setReminder.textBox("Field").enterText(text5ForReminder);
-            setReminder.textBox("Field").enterText(text4ForReminder);
+            setReminder.textBox("Field").robot().enterText(text5ForReminder);
+            setReminder.textBox("Field").robot().enterText(text4ForReminder);
             listOftext[i - 1] = listOftext[i - 1] + text5ForReminder + text4ForReminder;
             setReminder.comboBox(setDelayReminderFrame).selectItem(contents.length - i);
             setReminder.comboBox(setPeriodReminderFrame).selectItem(contents.length - i);
