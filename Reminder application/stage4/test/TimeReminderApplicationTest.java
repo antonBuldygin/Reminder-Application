@@ -269,21 +269,29 @@ public class TimeReminderApplicationTest extends SwingTest {
         return correct();
     }
 
-    @DynamicTest(order = 18) CheckResult testDeleteOption() throws Exception {
+
+    @DynamicTest(order = 18)
+    CheckResult testDeleteOption() throws Exception {
         String[] contents = jListFixture.contents();
         Iterator<String> iterator = Arrays.stream(contents).iterator();
+        int before;
+        int after;
         while (iterator.hasNext() && jListFixture.contents().length != 0) {
+            before = jListFixture.contents().length;
 //            LOG.info("List size {}", jListFixture.contents().length);
             jListFixture.clickItem(0);
             Thread.sleep(200);
             deleteButton.click();
+            after = jListFixture.contents().length;
+            if (before != after + 1) {
+                throw new WrongAnswer("Reminder is not deleted. Please  check delete button action");
+            }
         }
         if (jListFixture.contents().length != 0) {
             throw new WrongAnswer("all reminders should be deleted from 'Reminder Application' window ");
         }
         return correct();
     }
-
 
     @DynamicTest(order = 19, feedback = "Exception caught by Edit Button")
     CheckResult testEditButtom() throws Exception, InterruptedException {
