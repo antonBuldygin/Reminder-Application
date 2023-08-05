@@ -269,14 +269,23 @@ public class TimeReminderApplicationTest extends SwingTest {
         return correct();
     }
 
-    @DynamicTest(order = 18) CheckResult testDeleteOption() throws Exception {
+
+    @DynamicTest(order = 18)
+    CheckResult testDeleteOption() throws Exception {
         String[] contents = jListFixture.contents();
         Iterator<String> iterator = Arrays.stream(contents).iterator();
+        int before;
+        int after;
         while (iterator.hasNext() && jListFixture.contents().length != 0) {
+            before = jListFixture.contents().length;
 //            LOG.info("List size {}", jListFixture.contents().length);
             jListFixture.clickItem(0);
             Thread.sleep(200);
             deleteButton.click();
+            after = jListFixture.contents().length;
+            if (before != after + 1) {
+                throw new WrongAnswer("Reminder is not deleted. Please  check delete button action");
+            }
         }
         if (jListFixture.contents().length != 0) {
             throw new WrongAnswer("all reminders should be deleted from 'Reminder Application' window ");
@@ -284,7 +293,97 @@ public class TimeReminderApplicationTest extends SwingTest {
         return correct();
     }
 
-    @DynamicTest(order = 19, feedback = "The window with title 'Set Reminder' should appear")
+    @DynamicTest(order = 19, feedback = "Exception caught by Edit Button")
+    CheckResult testEditButtom() throws Exception, InterruptedException {
+
+        final String[] threadTocheck = new String[1];
+        SwingUtilities.invokeAndWait(new Runnable()
+        {
+            public void run()
+            {
+                // We are in the event dispatching thread
+                threadTocheck[0] =  Thread.currentThread().getName();
+            }
+        });
+
+        final boolean[] finalChe1 = {false};
+        Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
+            @Override
+            public void uncaughtException(Thread th, Throwable ex) {
+
+                finalChe1[0] = true;
+
+                System.out.println("Uncaught exception: " + ex);
+
+
+            }
+        };
+
+
+        for (Thread t : Thread.getAllStackTraces().keySet()) {
+            if (t.getName().equals(threadTocheck[0])) {t.setUncaughtExceptionHandler(h);
+                System.out.println("Thread found " + t.getName());
+            }
+        }
+
+        editButton.click();
+
+        if (finalChe1[0]) {
+            throw new WrongAnswer("Edit buttom click cause exception in Thread");
+        }
+
+
+        return correct();
+
+    }
+
+
+    @DynamicTest(order = 20, feedback = "Exception caught by Delete Button")
+    CheckResult testDeleteButtom() throws Exception, InterruptedException {
+        final String[] threadTocheck = new String[1];
+        SwingUtilities.invokeAndWait(new Runnable()
+        {
+            public void run()
+            {
+                // We are in the event dispatching thread
+                threadTocheck[0] =  Thread.currentThread().getName();
+            }
+        });
+
+
+        final boolean[] finalChe1 = {false};
+        Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
+            @Override
+            public void uncaughtException(Thread th, Throwable ex) {
+
+                finalChe1[0] = true;
+//                System.out.println(" Final " + Thread.currentThread().getName() + finalChe1[0]);
+                System.out.println("Uncaught exception: " + ex);
+//                throw new WrongAnswer("dddd");
+
+            }
+        };
+
+        for (Thread t : Thread.getAllStackTraces().keySet()) {
+            if (t.getName().equals( threadTocheck[0])) {t.setUncaughtExceptionHandler(h);
+                System.out.println("Thread found " + t.getName());
+            }
+        }
+
+        deleteButton.click();
+
+        if (finalChe1[0]) {
+            throw new WrongAnswer("Delete buttom click cause exception in Thread");
+        }
+
+
+        return correct();
+
+    }
+
+
+
+    @DynamicTest(order = 21, feedback = "The window with title 'Set Reminder' should appear")
     CheckResult test6() throws Exception {
         addButton.click();
         try {
@@ -311,7 +410,7 @@ public class TimeReminderApplicationTest extends SwingTest {
         return correct();
     }
 
-    @DynamicTest(order = 20, feedback = "OK button in 'Set Reminder' should  be disabled")
+    @DynamicTest(order = 22, feedback = "OK button in 'Set Reminder' should  be disabled")
     CheckResult okButtonCheck1() throws Exception {
         Thread.sleep(4000);
         addButton.click();
@@ -340,7 +439,7 @@ public class TimeReminderApplicationTest extends SwingTest {
         return correct();
     }
 
-    @DynamicTest(order = 21, feedback = "OK button in 'Set Reminder' should  be disabled")
+    @DynamicTest(order = 23, feedback = "OK button in 'Set Reminder' should  be disabled")
     CheckResult okButtonCheck2() throws Exception {
         Thread.sleep(4000);
         jListFixture.clickItem(0);

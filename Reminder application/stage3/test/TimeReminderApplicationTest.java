@@ -174,6 +174,16 @@ public class TimeReminderApplicationTest extends SwingTest {
 //            LOG.error("Timeout waiting for the window passed");
             return wrong("Incorrect Reminder set up window");
         }
+        String[] contents = setReminder.comboBox(setDelayReminderFrame).contents();
+        if(contents.length!=delayMap.size()){
+            throw new WrongAnswer("Delay Combobox is incorrect, please check size");
+        }
+
+        String[] contents1 = setReminder.comboBox(setPeriodReminderFrame).contents();
+        if(contents1.length!=periodMap.size()){
+            throw new WrongAnswer("period Combobox is incorrect, please check size");
+        }
+
         setReminder.textBox("Field").setText(listOftext[3]);
         setReminder.comboBox(setDelayReminderFrame).selectItem(0);
         setReminder.comboBox(setPeriodReminderFrame).selectItem(0);

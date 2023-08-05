@@ -84,5 +84,23 @@ public class TimeReminderApplicationTest extends SwingTest {
         return correct();
     }
 
+    @DynamicTest(order = 9, feedback = "Location  of button \"Delete\" Should be - x= 50  and y = 220)")
+    CheckResult deleteButtonLocation() {
+        Point location = deleteButton.target().getLocation();
+//        LOG.info("x =  {} , y =  {}", location.getX(), location.getY());
+        assertThat(location.getX()).isEqualTo(300);
+        assertThat(location.getY()).isEqualTo(220);
+        return correct();
+    }
+
+    @DynamicTest(order = 10, feedback = "Location  of button \"Edit\" Should be - x= 50  and y = 220)")
+    CheckResult editButtonLocation() {
+        Point location = editButton.target().getLocation();
+//        LOG.info("x =  {} , y =  {}", location.getX(), location.getY());
+        assertThat(location.getX()).isEqualTo(180);
+        assertThat(location.getY()).isEqualTo(220);
+        return correct();
+    }
+
 }
 
