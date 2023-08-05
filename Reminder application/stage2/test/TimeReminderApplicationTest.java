@@ -157,6 +157,13 @@ public class TimeReminderApplicationTest extends SwingTest {
 //            LOG.error("Timeout waiting for the window passed");
             return wrong("Incorrect Reminder set up window");
         }
+
+        Optional<Component> cancel = componentsAvailability(cancelButtonReminderFrame);
+        if (cancel.isEmpty() || !(cancel.get() instanceof JButton)) {
+            throw new WrongAnswer("JButton required with name " + cancelButtonReminderFrame);
+        }
+
+
         setReminder.button("Cancel").click();
         setReminder.requireNotVisible();
         return correct();
@@ -175,6 +182,13 @@ public class TimeReminderApplicationTest extends SwingTest {
 //            LOG.error("Timeout waiting for the window passed");
             return wrong("Incorrect Reminder set up window");
         }
+
+        Optional<Component> field = componentsAvailability(textFieldReminderFrame);
+        Optional<Component> ok = componentsAvailability(okButtonReminderFrame);
+        if (ok.isEmpty() || !(ok.get() instanceof JButton)) {
+            throw new WrongAnswer("JButton required with name " + okButtonReminderFrame);
+        }
+
         setReminder.button("OK").click();
         setReminder.requireNotVisible();
         return correct();
